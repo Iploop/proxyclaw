@@ -92,6 +92,101 @@ proxies = {"https": f"http://user:{API_KEY}-country-US@gateway.iploop.io:8880"}
 r = requests.get("https://example.com", proxies=proxies)
 ```
 
+## 🌐 Browser Integration
+
+### Puppeteer (Headless Chrome)
+```javascript
+const puppeteer = require('puppeteer');
+
+const browser = await puppeteer.launch({
+  args: [`--proxy-server=http://gateway.iploop.io:8880`]
+});
+const page = await browser.newPage();
+await page.authenticate({ username: 'user', password: `${API_KEY}-country-US` });
+await page.goto('https://example.com');
+console.log(await page.content());
+await browser.close();
+```
+
+### Playwright (Multi-Browser)
+```python
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(proxy={
+        "server": "http://gateway.iploop.io:8880",
+        "username": "user",
+        "password": f"{API_KEY}-country-US"
+    })
+    page = browser.new_page()
+    page.goto("https://example.com")
+    print(page.content())
+    browser.close()
+```
+
+### Selenium
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+options.add_argument('--proxy-server=http://gateway.iploop.io:8880')
+driver = webdriver.Chrome(options=options)
+driver.get("https://example.com")
+print(driver.page_source)
+driver.quit()
+```
+
+### Scrapy
+```python
+# settings.py
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
+}
+HTTP_PROXY = 'http://user:YOUR_API_KEY-country-US@gateway.iploop.io:8880'
+```
+
+### Anti-Detect Browsers (GoLogin, Multilogin, AdsPower)
+Use these proxy settings in any anti-detect browser profile:
+- **Type:** HTTP
+- **Host:** `gateway.iploop.io`
+- **Port:** `8880`
+- **Username:** `user`
+- **Password:** `YOUR_API_KEY-country-US` (change country code as needed)
+
+Each browser profile gets a unique residential IP — perfect for multi-account management.
+
+## 🛡️ Anti-Bot Bypass Tips
+
+ProxyClaw residential IPs naturally bypass most anti-bot systems because they come from **real devices with real ISP fingerprints**. For best results:
+
+1. **Rotate IPs per request** — default behavior, every request gets a fresh IP
+2. **Use country targeting** — match the proxy country to the site's target audience
+3. **Add realistic headers** — set User-Agent, Accept-Language matching the proxy country
+4. **Rate limit requests** — 1-2 req/sec per IP avoids rate limiting
+5. **Use browser automation** — Puppeteer/Playwright with our proxy passes JavaScript challenges
+6. **Handle CAPTCHAs** — combine with 2Captcha or Anti-Captcha for CAPTCHA-heavy sites
+
+### Sites That Work Out of the Box
+- Google Search, Google Maps, Google Shopping
+- Amazon, eBay, Walmart, Target
+- LinkedIn, Facebook, Instagram, Twitter/X
+- Zillow, Realtor, Redfin
+- Yelp, TripAdvisor
+- Any site that allows residential traffic
+
+### Common Use Cases
+| Use Case | Recommended Setup |
+|----------|-------------------|
+| **Web Scraping** | Puppeteer + country targeting + IP rotation |
+| **Price Monitoring** | Scrapy + rotating US/EU proxies |
+| **Ad Verification** | Playwright + geo-targeted IPs |
+| **SEO Monitoring** | Python requests + country targeting |
+| **Social Media** | Anti-detect browser + sticky sessions |
+| **Market Research** | Browser automation + multi-country |
+| **Brand Protection** | Rotating proxies + global coverage |
+| **AI Training Data** | High-volume scraping + all countries |
+
 ## 📄 HTML → Markdown
 
 ```bash
