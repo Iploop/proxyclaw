@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPLoop — Sign Up Free</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+  .container { max-width: 440px; width: 100%; }
+  .logo { text-align: center; margin-bottom: 32px; }
+  .logo h1 { font-size: 32px; color: #00d4ff; margin-bottom: 8px; }
+  .logo p { color: #888; font-size: 15px; }
+  .card { background: #1a1a2e; border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+  .card h2 { color: #fff; font-size: 20px; margin-bottom: 4px; }
+  .card .sub { color: #888; font-size: 14px; margin-bottom: 24px; }
+  .free-badge { display: inline-block; background: rgba(0,212,255,0.15); color: #00d4ff; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+  label { display: block; color: #aaa; font-size: 13px; margin-bottom: 6px; margin-top: 16px; }
+  input[type="email"], input[type="password"] { width: 100%; padding: 12px 14px; background: #0d0d1a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 15px; outline: none; transition: border-color 0.2s; }
+  input:focus { border-color: #00d4ff; }
+  .btn { width: 100%; padding: 14px; background: #00d4ff; color: #000; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 24px; transition: background 0.2s; }
+  .btn:hover { background: #00b8e6; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .error { color: #ff4444; font-size: 13px; margin-top: 8px; display: none; }
+  .success { display: none; text-align: center; }
+  .success h2 { color: #00ff88; font-size: 22px; margin-bottom: 12px; }
+  .success .key-box { background: #0d0d1a; border: 1px solid #333; border-radius: 8px; padding: 14px; margin: 16px 0; word-break: break-all; }
+  .success .key-box label { margin: 0 0 4px 0; }
+  .success .key-box code { color: #00ff88; font-size: 14px; }
+  .success .next-steps { text-align: left; margin-top: 20px; }
+  .success .next-steps li { margin: 8px 0; font-size: 14px; color: #ccc; }
+  .success .next-steps code { background: #0d0d1a; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #00d4ff; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .feat { background: #12122a; border-radius: 10px; padding: 14px; text-align: center; }
+  .feat .num { font-size: 20px; font-weight: 700; color: #00d4ff; }
+  .feat .label { font-size: 12px; color: #888; margin-top: 2px; }
+  .links { text-align: center; margin-top: 16px; font-size: 14px; }
+  .links a { color: #00d4ff; text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+  .divider { color: #555; margin: 0 8px; }
+  .bottom { text-align: center; color: #555; font-size: 12px; margin-top: 24px; }
+  .bottom a { color: #888; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <h1>🌐 IPLoop</h1>
+    <p>Premium residential proxies for AI agents & developers</p>
+  </div>
+
+  <div class="features">
+    <div class="feat"><div class="num">2M+</div><div class="label">Residential IPs</div></div>
+    <div class="feat"><div class="num">50+</div><div class="label">Countries</div></div>
+    <div class="feat"><div class="num">0.5 GB</div><div class="label">Free to Start</div></div>
+    <div class="feat"><div class="num">~70 GB</div><div class="label">Earn Monthly</div></div>
+  </div>
+
+  <div class="card" id="signup-form">
+    <span class="free-badge">✨ 0.5 GB Free — No Credit Card</span>
+    <h2>Create Your Account</h2>
+    <p class="sub">Get your API key in 10 seconds</p>
+
+    <form onsubmit="doSignup(event)">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Min 8 characters" required minlength="8">
+
+      <div class="error" id="error"></div>
+      <button type="submit" class="btn" id="submit-btn">Sign Up Free</button>
+    </form>
+
+    <div class="links" style="margin-top:16px;">
+      Already have an account? <a href="/dashboard.html">Log in</a>
+    </div>
+  </div>
+
+  <div class="success" id="success-panel">
+    <h2>🎉 You're In!</h2>
+    <p style="color:#ccc;">Welcome to IPLoop. Here's everything you need:</p>
+
+    <div class="key-box">
+      <label>Your API Key</label>
+      <code id="show-api-key"></code>
+    </div>
+
+    <div class="key-box">
+      <label>Quick Start — Try it now</label>
+      <code id="show-curl"></code>
+    </div>
+
+    <ul class="next-steps">
+      <li>📧 Check your email for the full guide</li>
+      <li>🌍 Target countries: add <code>-country-US</code> to your key</li>
+      <li>🐳 Earn credits: <code>docker run -d --name iploop-node --restart=always ultronloop2026/iploop-node:latest</code></li>
+      <li>📊 <a href="/dashboard.html" style="color:#00d4ff;">Go to Dashboard</a> to manage your account</li>
+    </ul>
+  </div>
+
+  <div class="bottom">
+    <a href="/privacy.html">Privacy</a> <span class="divider">•</span>
+    <a href="/terms.html">Terms</a> <span class="divider">•</span>
+    <a href="https://github.com/iploop">GitHub</a> <span class="divider">•</span>
+    <a href="mailto:partners@iploop.io">Contact</a>
+    <p style="margin-top:8px;">© 2026 IPLoop. All rights reserved.</p>
+  </div>
+</div>
+
+<script>
+const API = 'https://gateway.iploop.io:9443';
+
+async function doSignup(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const err = document.getElementById('error');
+  err.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Creating account...';
+
+  try {
+    const res = await fetch(API + '/api/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+      })
+    });
+    const data = await res.json();
+
+    if (!res.ok || data.error) {
+      err.textContent = data.error || 'Signup failed';
+      err.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Sign Up Free';
+      return;
+    }
+
+    // Success
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('success-panel').style.display = 'block';
+    document.getElementById('show-api-key').textContent = data.api_key;
+    document.getElementById('show-curl').textContent = `curl -x "http://user:${data.api_key}@gateway.iploop.io:8880" https://httpbin.org/ip`;
+
+    // Save for dashboard
+    localStorage.setItem('iploop_api_key', data.api_key);
+    localStorage.setItem('iploop_token', data.token);
+    localStorage.setItem('iploop_email', data.email);
+  } catch (ex) {
+    err.textContent = 'Network error. Please try again.';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Sign Up Free';
+  }
+}
+</script>
+</body>
+</html>
