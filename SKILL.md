@@ -1,0 +1,222 @@
+---
+name: proxyclaw
+description: |
+  ProxyClaw by IPLoop — Residential proxy access for AI agents. Route requests through 2M+ residential IPs across 50+ countries from real Android, Windows, Mac & Smart TV devices. Bypass geo-restrictions, rotate IPs automatically. Free tier with 0.5GB included. Earn unlimited proxy credits by contributing bandwidth via Docker.
+compatibility: Requires network access
+metadata:
+  author: iploop
+  version: "2.0"
+  website: https://iploop.io
+  github: https://github.com/Furhworld/iploop-node
+  docker: ultronloop2026/iploop-node
+---
+
+# 🌐 ProxyClaw by IPLoop
+
+**Premium residential proxies for AI agents — powered by 2M+ real device IPs.**
+
+Unlike datacenter proxies that get blocked instantly, ProxyClaw routes through real Android phones, Windows PCs, Macs, and Smart TVs in 50+ countries. Sites see a normal residential user, not a bot.
+
+## ⚡ Why ProxyClaw
+
+| Feature | ProxyClaw | Datacenter Proxy | Bright Data |
+|---------|-----------|------------------|-------------|
+| IP Pool | **2M+ residential** | ~10K shared | 72M ($$$$) |
+| Detection Rate | **< 5%** | 40-60% | < 5% |
+| Price (per GB) | **$0.60 - $1.00** | $0.10 | $8-15 |
+| Free Tier | **0.5 GB included** | ❌ | ❌ |
+| Earn Credits | **✅ Docker node** | ❌ | ❌ |
+| Device Types | Android, Windows, Mac, Smart TV | Servers | Mixed |
+| Setup Time | **30 seconds** | Minutes | Hours |
+
+## 🚀 Quick Start (30 seconds)
+
+### 1. Get Your Free API Key
+
+```bash
+curl -s -X POST https://gateway.iploop.io:9443/api/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{"email":"you@example.com","password":"yourpassword"}'
+```
+
+Returns your `api_key` — that's all you need. **0.5 GB free, no credit card required.**
+
+Or sign up at [iploop.io](https://iploop.io)
+
+### 2. Start Fetching
+
+```bash
+export IPLOOP_API_KEY="your_api_key"
+
+# Basic — auto-rotates IP every request
+curl -x "http://user:${IPLOOP_API_KEY}@gateway.iploop.io:8880" https://example.com
+
+# Target a country
+curl -x "http://user:${IPLOOP_API_KEY}-country-US@gateway.iploop.io:8880" https://example.com
+
+# Use the helper script
+./fetch.sh https://example.com --country US --format markdown
+```
+
+## 🌍 Country Targeting
+
+Append `-country-{CC}` to your API key in the proxy password:
+
+```bash
+# United States (largest pool — 1M+ IPs)
+curl -x "http://user:${IPLOOP_API_KEY}-country-US@gateway.iploop.io:8880" https://example.com
+
+# Germany, UK, Brazil, Japan...
+curl -x "http://user:${IPLOOP_API_KEY}-country-DE@gateway.iploop.io:8880" https://example.com
+curl -x "http://user:${IPLOOP_API_KEY}-country-GB@gateway.iploop.io:8880" https://example.com
+curl -x "http://user:${IPLOOP_API_KEY}-country-BR@gateway.iploop.io:8880" https://example.com
+curl -x "http://user:${IPLOOP_API_KEY}-country-JP@gateway.iploop.io:8880" https://example.com
+```
+
+**50+ countries:** US, GB, DE, FR, CA, AU, JP, KR, BR, IN, IT, ES, NL, SE, NO, DK, FI, PL, CZ, AT, CH, BE, PT, IE, RU, UA, TR, IL, ZA, MX, AR, CL, CO, PE, TH, VN, PH, ID, MY, SG, HK, TW, NZ, RO, BG, HU, GR, EG, NG, KE, and more.
+
+## 🐍 Python
+
+```python
+import requests
+
+API_KEY = "your_api_key"
+
+# Auto-rotating residential IP
+proxies = {"https": f"http://user:{API_KEY}@gateway.iploop.io:8880"}
+r = requests.get("https://httpbin.org/ip", proxies=proxies)
+print(r.json())  # Different IP every request
+
+# Country-targeted
+proxies = {"https": f"http://user:{API_KEY}-country-US@gateway.iploop.io:8880"}
+r = requests.get("https://example.com", proxies=proxies)
+```
+
+## 📄 HTML → Markdown
+
+```bash
+# With node-html-markdown installed
+./fetch.sh https://example.com --format markdown
+
+# Or pipe manually
+curl -x "http://user:${IPLOOP_API_KEY}@gateway.iploop.io:8880" https://example.com | nhm
+```
+
+Install converter: `npm install -g node-html-markdown`
+
+---
+
+## 💰 Pricing
+
+| Plan | Data | Price | Per GB |
+|------|------|-------|--------|
+| **Free** | 0.5 GB | $0 | Free |
+| **Starter** | 10 GB | $10/mo | $1.00 |
+| **Growth** | 50 GB | $40/mo | $0.80 |
+| **Business** | 200 GB | $120/mo | $0.60 |
+| **Enterprise** | 1 TB+ | Custom | $0.40+ |
+
+**Or earn unlimited free proxy data** by running a Docker node ↓
+
+---
+
+## 🐳 Earn Free Proxy Credits (Docker)
+
+Share your unused bandwidth and earn proxy credits. **1 GB shared = 1 GB of proxy access.**
+
+### One Command Setup
+
+```bash
+docker run -d --name iploop-node --restart=always ultronloop2026/iploop-node:latest
+```
+
+That's it. The container:
+- Auto-registers with the IPLoop network
+- Shares idle bandwidth (configurable limits)
+- Earns credits in real-time
+- Uses < 50MB RAM, near-zero CPU
+- Auto-reconnects on network issues
+
+### Check Your Credits
+
+```bash
+# Get your node token from container logs
+docker logs iploop-node | head -5
+
+# Check credits
+curl "https://gateway.iploop.io:9443/api/credits?token=YOUR_TOKEN"
+```
+
+### Docker Compose
+
+```yaml
+version: '3'
+services:
+  iploop-node:
+    image: ultronloop2026/iploop-node:latest
+    container_name: iploop-node
+    restart: always
+    environment:
+      - IPLOOP_GATEWAY=gateway.iploop.io:9443
+```
+
+### Supported Platforms
+
+| Platform | Architecture | Image |
+|----------|-------------|-------|
+| Linux | amd64 | `ultronloop2026/iploop-node:latest` |
+| Linux | arm64 | `ultronloop2026/iploop-node:latest` |
+| macOS | Intel/M1+ | `ultronloop2026/iploop-node:latest` |
+| Windows | x64 | `ultronloop2026/iploop-node:latest` |
+| Raspberry Pi | armv7 | `ultronloop2026/iploop-node:latest` |
+
+### Standalone Binaries
+
+Don't want Docker? Download the binary directly:
+- [Linux amd64](https://github.com/Furhworld/iploop-node/releases)
+- [Linux arm64](https://github.com/Furhworld/iploop-node/releases)
+- [macOS Intel](https://github.com/Furhworld/iploop-node/releases)
+- [macOS ARM](https://github.com/Furhworld/iploop-node/releases)
+- [Windows x64](https://github.com/Furhworld/iploop-node/releases)
+- [Linux armv7 (RPi)](https://github.com/Furhworld/iploop-node/releases)
+
+---
+
+## 📊 Network Stats
+
+- **2,000,000+** residential IPs
+- **19,000+** nodes online at any time
+- **50+** countries covered
+- **Device types:** Android, Windows, Mac, Smart TV
+- **Uptime:** 99.9%
+- **Avg response:** < 2s
+
+Check live stats: `curl https://gateway.iploop.io:9443/dashboard`
+
+---
+
+## 🔒 How It Works
+
+1. **You send a request** through ProxyClaw (HTTPS CONNECT proxy)
+2. **Gateway selects a residential node** matching your country/targeting
+3. **Request routes through a real device** (phone, PC, TV)
+4. **Response returns** through the same path
+5. **Target site sees a normal residential IP** — not a datacenter
+
+All traffic is encrypted end-to-end. We don't inspect, log, or cache your requests.
+
+---
+
+## 🔧 Setup
+
+Run `setup.sh` to verify everything works:
+```bash
+./setup.sh
+```
+
+## Links
+
+- **Dashboard:** [iploop.io](https://iploop.io)
+- **GitHub:** [github.com/Furhworld/iploop-node](https://github.com/Furhworld/iploop-node)
+- **Docker Hub:** [hub.docker.com/r/ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
+- **Support:** partners@iploop.io
