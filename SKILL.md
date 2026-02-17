@@ -7,7 +7,7 @@ metadata:
   author: iploop
   version: "2.0"
   website: https://iploop.io
-  github: https://github.com/Furhworld/iploop-node
+  github: https://github.com/iploop/iploop-node
   docker: ultronloop2026/iploop-node
 ---
 
@@ -173,12 +173,12 @@ services:
 ### Standalone Binaries
 
 Don't want Docker? Download the binary directly:
-- [Linux amd64](https://github.com/Furhworld/iploop-node/releases)
-- [Linux arm64](https://github.com/Furhworld/iploop-node/releases)
-- [macOS Intel](https://github.com/Furhworld/iploop-node/releases)
-- [macOS ARM](https://github.com/Furhworld/iploop-node/releases)
-- [Windows x64](https://github.com/Furhworld/iploop-node/releases)
-- [Linux armv7 (RPi)](https://github.com/Furhworld/iploop-node/releases)
+- [Linux amd64](https://github.com/iploop/iploop-node/releases)
+- [Linux arm64](https://github.com/iploop/iploop-node/releases)
+- [macOS Intel](https://github.com/iploop/iploop-node/releases)
+- [macOS ARM](https://github.com/iploop/iploop-node/releases)
+- [Windows x64](https://github.com/iploop/iploop-node/releases)
+- [Linux armv7 (RPi)](https://github.com/iploop/iploop-node/releases)
 
 ---
 
@@ -217,6 +217,6 @@ Run `setup.sh` to verify everything works:
 ## Links
 
 - **Dashboard:** [iploop.io](https://iploop.io)
-- **GitHub:** [github.com/Furhworld/iploop-node](https://github.com/Furhworld/iploop-node)
+- **GitHub:** [github.com/iploop/iploop-node](https://github.com/iploop/iploop-node)
 - **Docker Hub:** [hub.docker.com/r/ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
 - **Support:** partners@iploop.io
