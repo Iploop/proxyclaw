@@ -315,3 +315,29 @@ Run `setup.sh` to verify everything works:
 - **GitHub:** [github.com/iploop/iploop-node](https://github.com/iploop/iploop-node)
 - **Docker Hub:** [hub.docker.com/r/ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
 - **Support:** partners@iploop.io
+
+---
+
+## 🛠 Support API
+
+Self-service support endpoints at `gateway.iploop.io:9443`:
+
+| Endpoint | Method | Auth | Description |
+|----------|--------|------|-------------|
+| `/api/support/status` | GET | No | System health check |
+| `/api/support/diagnose?api_key=KEY` | GET | Yes | Diagnose your key — plan, quota, usage |
+| `/api/support/errors/{code}` | GET | No | Error code lookup (407, 403, 502, etc.) |
+| `/api/support/ask` | POST | Yes | Ask questions (body: `{"question": "..."}`) |
+
+### Rate Limits
+
+All responses include `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` headers.
+
+| Plan | Requests/min |
+|------|-------------|
+| Free | 30 |
+| Rewarded | 120 |
+| Starter | 120 |
+| Growth | 300 |
+| Business | 600 |
+| Enterprise | 1000+ |
