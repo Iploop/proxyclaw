@@ -207,6 +207,52 @@ All traffic is encrypted end-to-end. We don't inspect, log, or cache your reques
 
 ---
 
+## 🤖 Support API (For Bots)
+
+Integrate IPLoop programmatically — status checks, diagnostics, error handling, and Q&A.
+
+| Endpoint | Auth | Description |
+|----------|------|-------------|
+| `GET /api/support/status` | No | Service health + availability |
+| `GET /api/support/diagnose?api_key=X` | Yes | Key validation, quota, usage |
+| `GET /api/support/errors/{code}` | No | Error code lookup + fix suggestions |
+| `POST /api/support/ask` | Yes | Ask questions (CAPTCHA, blocks, browser, pricing) |
+
+### Quick Examples
+
+```bash
+# Check service status
+curl -s https://gateway.iploop.io:9443/api/support/status
+
+# Diagnose your API key
+curl -s "https://gateway.iploop.io:9443/api/support/diagnose?api_key=YOUR_KEY"
+
+# Look up an error
+curl -s https://gateway.iploop.io:9443/api/support/errors/407
+
+# Ask about CAPTCHA handling
+curl -s -X POST "https://gateway.iploop.io:9443/api/support/ask?api_key=YOUR_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"question":"how to handle captcha?"}'
+```
+
+### Rate Limits
+
+All responses include `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` headers.
+
+| Plan | Requests/min |
+|------|-------------|
+| Free | 30 |
+| Rewarded | 120 |
+| Starter | 120 |
+| Growth | 300 |
+| Business | 600 |
+| Enterprise | 1000+ |
+
+📖 **[Full API Documentation](docs/SUPPORT-API.md)**
+
+---
+
 ## 🔧 Setup
 
 Run `setup.sh` to verify everything works:
