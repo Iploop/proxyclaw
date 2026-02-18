@@ -1,7 +1,7 @@
 ---
 name: proxyclaw
 description: |
-  ProxyClaw by IPLoop — Residential proxy access for AI agents. Route requests through 2M+ residential IPs across 50+ countries from real Android, Windows, Mac & Smart TV devices. Bypass geo-restrictions, rotate IPs automatically. Free tier with 0.5GB included. Earn unlimited proxy credits by contributing bandwidth via Docker.
+  ProxyClaw by IPLoop — Residential proxy access for AI agents. Route requests through 2M+ residential IPs across 195+ countries from real Android, Windows, Mac & Smart TV devices. Bypass geo-restrictions, rotate IPs automatically. Free tier with 0.5GB included. Earn unlimited proxy credits by contributing bandwidth via Docker.
 compatibility: Requires network access
 metadata:
   author: iploop
@@ -15,7 +15,7 @@ metadata:
 
 **Premium residential proxies for AI agents — powered by 2M+ real device IPs.**
 
-Unlike datacenter proxies that get blocked instantly, ProxyClaw routes through real Android phones, Windows PCs, Macs, and Smart TVs in 50+ countries. Sites see a normal residential user, not a bot.
+Unlike datacenter proxies that get blocked instantly, ProxyClaw routes through real Android phones, Windows PCs, Macs, and Smart TVs in 195+ countries. Sites see a normal residential user, not a bot.
 
 ## ⚡ Why ProxyClaw
 
@@ -73,7 +73,7 @@ curl -x "http://user:${IPLOOP_API_KEY}-country-BR@gateway.iploop.io:8880" https:
 curl -x "http://user:${IPLOOP_API_KEY}-country-JP@gateway.iploop.io:8880" https://example.com
 ```
 
-**50+ countries:** US, GB, DE, FR, CA, AU, JP, KR, BR, IN, IT, ES, NL, SE, NO, DK, FI, PL, CZ, AT, CH, BE, PT, IE, RU, UA, TR, IL, ZA, MX, AR, CL, CO, PE, TH, VN, PH, ID, MY, SG, HK, TW, NZ, RO, BG, HU, GR, EG, NG, KE, and more.
+**195+ countries:** US, GB, DE, FR, CA, AU, JP, KR, BR, IN, IT, ES, NL, SE, NO, DK, FI, PL, CZ, AT, CH, BE, PT, IE, RU, UA, TR, IL, ZA, MX, AR, CL, CO, PE, TH, VN, PH, ID, MY, SG, HK, TW, NZ, RO, BG, HU, GR, EG, NG, KE, and more.
 
 ## 🐍 Python
 
@@ -186,7 +186,7 @@ Don't want Docker? Download the binary directly:
 
 - **2,000,000+** residential IPs
 - **19,000+** nodes online at any time
-- **50+** countries covered
+- **195+** countries covered
 - **Device types:** Android, Windows, Mac, Smart TV
 - **Uptime:** 99.9%
 - **Avg response:** < 2s
