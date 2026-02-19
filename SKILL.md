@@ -15,7 +15,11 @@ metadata:
 
 **Premium residential proxies for AI agents — powered by 2M+ real device IPs.**
 
-Unlike datacenter proxies that get blocked instantly, ProxyClaw routes through real Android phones, Windows PCs, Macs, and Smart TVs in 50+ countries. Sites see a normal residential user, not a bot.
+Unlike datacenter proxies that get blocked instantly, ProxyClaw routes through real Android phones, Windows PCs, Macs, and Smart TVs in 192+ countries. Sites see a normal residential user, not a bot.
+
+**Two sides:**
+- 🖥️ **Demand:** `pip install iploop` / `npm install iploop` — proxy SDK for web scraping & unblocking
+- 📱 **Supply:** Android SDK / Docker node — earn rewards by sharing bandwidth
 
 ## ⚡ Why ProxyClaw
 
