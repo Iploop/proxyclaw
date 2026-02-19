@@ -75,8 +75,56 @@ curl -x "http://user:${IPLOOP_API_KEY}-country-JP@gateway.iploop.io:8880" https:
 
 **195+ countries:** US, GB, DE, FR, CA, AU, JP, KR, BR, IN, IT, ES, NL, SE, NO, DK, FI, PL, CZ, AT, CH, BE, PT, IE, RU, UA, TR, IL, ZA, MX, AR, CL, CO, PE, TH, VN, PH, ID, MY, SG, HK, TW, NZ, RO, BG, HU, GR, EG, NG, KE, and more.
 
-## 🐍 Python
+## 📦 Official SDKs
 
+### Python (`pip install iploop`)
+```python
+from iploop import IPLoop
+
+client = IPLoop("your_api_key", country="US")
+
+# Auto-rotating residential IP
+resp = client.get("https://httpbin.org/ip")
+print(resp.json())  # Different IP every request
+
+# Country-targeted
+resp = client.get("https://amazon.de", country="DE", city="berlin")
+
+# Sticky sessions — same IP across requests
+session = client.session(country="US")
+page1 = session.get("https://example.com/page1")
+page2 = session.get("https://example.com/page2")
+
+# Batch scraping
+results = client.batch(max_workers=10).fetch(urls)
+
+# Site presets
+client.google.search("residential proxy")
+client.amazon.product("B09V3KXJPB")
+```
+
+### Node.js (`npm install iploop`)
+```typescript
+import { IPLoopClient } from 'iploop';
+
+const client = new IPLoopClient({ apiKey: 'your_api_key', country: 'US' });
+
+const resp = await client.get('https://httpbin.org/ip');
+console.log(resp.data);
+
+// Geo-targeting
+const de = await client.get('https://amazon.de', { country: 'DE', city: 'berlin' });
+
+// Sticky sessions
+const session = client.session(undefined, 'US');
+await session.get('https://example.com/page1');
+await session.get('https://example.com/page2');
+
+// Batch
+const results = await client.fetchAll(urls, {}, 10);
+```
+
+### Raw curl (no SDK)
 ```python
 import requests
 
@@ -185,8 +233,8 @@ Don't want Docker? Download the binary directly:
 ## 📊 Network Stats
 
 - **2,000,000+** residential IPs
-- **19,000+** nodes online at any time
-- **195+** countries covered
+- **20,000+** nodes online at any time
+- **192+** countries covered
 - **Device types:** Android, Windows, Mac, Smart TV
 - **Uptime:** 99.9%
 - **Avg response:** < 2s
@@ -263,6 +311,8 @@ Run `setup.sh` to verify everything works:
 ## Links
 
 - **Dashboard:** [iploop.io](https://iploop.io)
-- **GitHub:** [github.com/iploop/iploop-node](https://github.com/iploop/iploop-node)
+- **Python SDK:** [pypi.org/project/iploop](https://pypi.org/project/iploop/) — `pip install iploop`
+- **Node.js SDK:** [npmjs.com/package/iploop](https://www.npmjs.com/package/iploop) — `npm install iploop`
+- **GitHub:** [github.com/Iploop](https://github.com/Iploop)
 - **Docker Hub:** [hub.docker.com/r/ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
 - **Support:** partners@iploop.io
