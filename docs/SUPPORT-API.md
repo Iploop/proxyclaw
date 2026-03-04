@@ -1,6 +1,6 @@
 # IPLoop Support API
 
-Base URL: `https://gateway.iploop.io:9443`
+Base URL: `https://api.iploop.io`
 
 All endpoints return JSON. Rate limit headers included on every response.
 
@@ -30,7 +30,7 @@ System health check. **No auth required.**
   "countries_available": 195,
   "coverage": "High availability across all regions",
   "protocols": ["HTTP CONNECT", "SOCKS5"],
-  "proxy_endpoint": "gateway.iploop.io:8880",
+  "proxy_endpoint": "proxy.iploop.io:8880",
   "supported_targeting": ["country", "city", "session", "sticky"],
   "docs": "https://docs.iploop.io"
 }
@@ -40,7 +40,7 @@ System health check. **No auth required.**
 
 **Example:**
 ```bash
-curl -s https://gateway.iploop.io:9443/api/support/status
+curl -s https://api.iploop.io/api/support/status
 ```
 
 ---
@@ -81,7 +81,7 @@ Diagnose your API key — check validity, plan, quota, usage. **Auth required.**
 
 **Example:**
 ```bash
-curl -s "https://gateway.iploop.io:9443/api/support/diagnose?api_key=YOUR_KEY"
+curl -s "https://api.iploop.io/api/support/diagnose?api_key=YOUR_KEY"
 ```
 
 ---
@@ -105,7 +105,7 @@ Look up error codes and fixes. **No auth required.**
 
 **Example:**
 ```bash
-curl -s https://gateway.iploop.io:9443/api/support/errors/407
+curl -s https://api.iploop.io/api/support/errors/407
 ```
 
 ---
@@ -133,7 +133,7 @@ Ask a question about the service. **Auth required.**
 
 **Example:**
 ```bash
-curl -s -X POST "https://gateway.iploop.io:9443/api/support/ask?api_key=YOUR_KEY" \
+curl -s -X POST "https://api.iploop.io/api/support/ask?api_key=YOUR_KEY" \
   -H "Content-Type: application/json" \
   -d '{"question": "what countries do you support?"}'
 ```
@@ -167,14 +167,14 @@ Every API response includes rate limit headers:
 
 **HTTP CONNECT:**
 ```bash
-curl -x http://user:YOUR_API_KEY-country-US@gateway.iploop.io:8880 https://httpbin.org/ip
+curl -x http://user:YOUR_API_KEY-country-US@proxy.iploop.io:8880 https://httpbin.org/ip
 ```
 
 **Python:**
 ```python
 proxies = {
-    "http": "http://user:YOUR_API_KEY-country-US@gateway.iploop.io:8880",
-    "https": "http://user:YOUR_API_KEY-country-US@gateway.iploop.io:8880"
+    "http": "http://user:YOUR_API_KEY-country-US@proxy.iploop.io:8880",
+    "https": "http://user:YOUR_API_KEY-country-US@proxy.iploop.io:8880"
 }
 requests.get("https://httpbin.org/ip", proxies=proxies)
 ```
@@ -192,7 +192,7 @@ requests.get("https://httpbin.org/ip", proxies=proxies)
 1. Sign up: `POST /api/auth/signup` with `{"email": "...", "password": "..."}`
 2. Check status: `GET /api/support/status`
 3. Test your key: `GET /api/support/diagnose?api_key=YOUR_KEY`
-4. Use proxy: `curl -x http://user:KEY-country-US@gateway.iploop.io:8880 https://target.com`
+4. Use proxy: `curl -x http://user:KEY-country-US@proxy.iploop.io:8880 https://target.com`
 5. Monitor quota: `GET /api/support/diagnose?api_key=YOUR_KEY`
 6. Handle errors: `GET /api/support/errors/{code}`
 

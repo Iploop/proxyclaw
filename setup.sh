@@ -10,7 +10,7 @@ if [ -z "${IPLOOP_API_KEY:-}" ]; then
   echo "Get your API key:"
   echo "  1. Sign up at https://iploop.io"
   echo "  2. Or via API:"
-  echo '     curl -X POST https://gateway.iploop.io:9443/api/auth/signup \'
+  echo '     curl -X POST https://iploop.io/signup.html \'
   echo '       -H "Content-Type: application/json" \'
   echo '       -d '"'"'{"email":"you@example.com","password":"your_password"}'"'"
   echo ""
@@ -23,7 +23,7 @@ echo "✅ IPLOOP_API_KEY is set"
 # Test connectivity
 echo "Testing proxy connectivity..."
 RESULT=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 \
-  -x "http://user:${IPLOOP_API_KEY}@gateway.iploop.io:8880" \
+  -x "http://user:${IPLOOP_API_KEY}@proxy.iploop.io:8880" \
   https://httpbin.org/ip 2>/dev/null || echo "000")
 
 if [ "$RESULT" = "200" ]; then

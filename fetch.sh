@@ -36,7 +36,7 @@ fi
 AUTH="user:${IPLOOP_API_KEY}"
 [ -n "$COUNTRY" ] && AUTH="user:${IPLOOP_API_KEY}-country-${COUNTRY}"
 
-PROXY="http://${AUTH}@gateway.iploop.io:8880"
+PROXY="http://${AUTH}@proxy.iploop.io:8880"
 
 # Fetch
 CONTENT=$(curl -s --max-time "$TIMEOUT" -x "$PROXY" "$URL")
