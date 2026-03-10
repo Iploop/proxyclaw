@@ -1,7 +1,7 @@
 ---
 name: proxyclaw
 description: |
-  ProxyClaw by IPLoop — Residential proxy access for AI agents. Route requests through 2M+ residential IPs across 195+ countries from real Android, Windows, Mac & Smart TV devices. Bypass geo-restrictions, rotate IPs automatically. Free tier with 0.5GB included. Earn unlimited proxy credits by contributing bandwidth via Docker. Use OPENCLAW for 20% off any paid plan.
+  ProxyClaw by IPLoop — Residential proxy access for AI agents. Route requests through 1M+ residential IPs across 195+ countries from real Android, Windows, Mac & Smart TV devices. Bypass geo-restrictions, rotate IPs automatically. Free tier with 0.5GB included. Earn unlimited proxy credits by contributing bandwidth via Docker. Use OPENCLAW for 20% off any paid plan.
 compatibility: Requires network access
 metadata:
   author: iploop
@@ -217,7 +217,7 @@ Runs on Linux, macOS, Windows, Raspberry Pi. Uses < 50MB RAM.
 
 ## 📊 Network
 
-- **2M+** residential IPs
+- **1M+** residential IPs
 - **20,000+** nodes online
 - **195+** countries
 - **99%+** success rate

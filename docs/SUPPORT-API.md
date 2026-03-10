@@ -15,7 +15,7 @@ curl -s https://gateway.iploop.io:9443/health
 ```json
 {
   "status": "healthy",
-  "connected_nodes": 9600,
+  "connected_nodes": 9,600+,
   "device_types": {"android": 8100, "windows": 1500},
   "service": "node-registration"
 }
@@ -27,8 +27,8 @@ curl -s https://gateway.iploop.io:9443/stats
 ```
 ```json
 {
-  "total_nodes": 9600,
-  "active_nodes": 9600,
+  "total_nodes": 9,600+,
+  "active_nodes": 9,600+,
   "device_types": {"android": 8100, "windows": 1500},
   "total_bandwidth_mb": 0
 }

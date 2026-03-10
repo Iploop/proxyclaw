@@ -1,6 +1,6 @@
 # ProxyClaw by IPLoop
 
-Residential proxy platform for AI agents, bots & data pipelines — 9,500+ nodes, 195+ countries, anti-bot bypass.
+Residential proxy platform for AI agents, bots & data pipelines — 1M+ residential IPs, 195+ countries, anti-bot bypass.
 
 [![QA](https://img.shields.io/badge/QA-66%2F66%20sites-brightgreen)](scripts/qa_scraper.py)
 [![Python](https://img.shields.io/badge/Python%20SDK-v1.5.0-blue)](https://github.com/Iploop/iploop-python)
@@ -107,7 +107,7 @@ Auth format: `user:APIKEY-country-XX-city-NAME-session-ID@proxy.iploop.io:8880`
 ### Gateway Health
 ```bash
 curl https://gateway.iploop.io:9443/health
-# → {"connected_nodes": 9500+, "status": "healthy"}
+# → {"connected_nodes": 9600+, "status": "healthy"}
 ```
 
 ## Earn Free Credits 💰
@@ -146,7 +146,8 @@ Use code **OPENCLAW** for 20% off.
 
 | Metric | Value |
 |--------|-------|
-| Connected nodes | 9,500+ |
+| Residential IP pool | 1,000,000+ |
+| Connected nodes | 9,600+ |
 | Daily unique IPs | 77,000+ |
 | Countries | 195+ |
 | Protocols | HTTP, HTTPS, SOCKS5 |

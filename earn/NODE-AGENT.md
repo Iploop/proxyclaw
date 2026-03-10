@@ -101,8 +101,9 @@ const result = await client.fetch('https://example.com', { country: 'US' });
 
 | Metric | Value |
 |--------|-------|
-| Connected nodes | 9,500+ |
-| Device types | Android (8,100+), Windows (1,400+) |
+| Residential IP pool | 1,000,000+ |
+| Connected nodes | 9,600+ |
+| Device types | Android (8,100+), Windows (1,500+) |
 | Countries | 195+ |
 | Proxy endpoint | `proxy.iploop.io:8880` |
 | Protocols | HTTP, HTTPS, SOCKS5 |

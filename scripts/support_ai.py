@@ -13,7 +13,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 KNOWLEDGE_BASE = {
     "about": {
         "keywords": ["what is iploop", "about iploop", "what do you do", "tell me about"],
-        "answer": "IPLoop is a residential proxy SDK for AI agents, bots, and data pipelines. 195+ countries, city-level targeting, HTTP/HTTPS/SOCKS5. Install with `pip install iploop[stealth]` or `npm install iploop`."
+        "answer": "IPLoop is a residential proxy platform with 1M+ real IPs across 195+ countries. Built for AI agents, bots, and data pipelines. City-level targeting, HTTP/HTTPS/SOCKS5. Install with `pip install iploop[stealth]` or `npm install iploop`."
     },
     "pricing": {
         "keywords": ["cost", "price", "pricing", "how much", "free plan", "free tier", "plans", "payment", "pay"],
@@ -65,7 +65,7 @@ KNOWLEDGE_BASE = {
     },
     "fleet": {
         "keywords": ["how many", "fleet", "nodes", "ips", "pool size"],
-        "answer": "22,000+ connected residential nodes, 77,000+ daily unique IPs across 195+ countries and 4 gateway servers."
+        "answer": "1,000,000+ residential IPs in our pool across 195+ countries. 9,600+ nodes connected right now, 77,000+ daily unique IPs rotating through 4 gateway servers."
     },
     "success": {
         "keywords": ["success rate", "reliable", "uptime", "stable"],
