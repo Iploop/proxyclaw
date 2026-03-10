@@ -128,22 +128,30 @@ curl -x "http://user:${IPLOOP_API_KEY}-asn-12345@proxy.iploop.io:8880" ...
 
 ---
 
-## 🐍 Python SDK
+## 🐍 Python SDK (Recommended)
 
 ```bash
-pip install iploop
+pip install iploop[stealth]   # ← includes anti-bot bypass (recommended)
+pip install iploop             # basic proxy only
 ```
 
 ```python
-from iploop import IPLoopClient
+from iploop import IPLoop
 
-client = IPLoopClient(api_key="your_api_key")
+client = IPLoop(api_key="your_api_key")  # stealth auto-activates
 
-# One-liner with auto-detection
-data = client.scrape("https://example.com")
+# Fetches through residential proxy with anti-bot fingerprinting
+r = client.get("https://www.zillow.com/homes/NYC_rb/")  # ✅ anti-bot bypassed
+r = client.get("https://www.walmart.com/browse/electronics")  # ✅ 1MB+ content
+r = client.get("https://www.indeed.com/jobs?q=python")  # ✅ job listings
 
-# Smart scrape with fallbacks for blocked sites
-data = client.smart_scrape("https://example.com")
+# Country targeting
+r = client.get("https://example.com", country="DE")
+
+# Sticky session (same IP)
+session = client.session()
+r1 = session.get("http://httpbin.org/ip")
+r2 = session.get("http://httpbin.org/ip")  # same IP
 
 # Manual proxy config
 import requests
@@ -225,6 +233,6 @@ See [rules/setup.md](./rules/setup.md) for full setup guide and troubleshooting.
 
 - **ProxyClaw:** [proxyclaw.ai](https://proxyclaw.ai)
 - **Sign Up:** [iploop.io/signup](https://iploop.io/signup.html)
-- **Python SDK:** `pip install iploop`
+- **Python SDK:** `pip install iploop[stealth]` (recommended — includes anti-bot bypass)
 - **Docker Hub:** [ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
 - **Support:** partners@iploop.io
