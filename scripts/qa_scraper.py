@@ -219,6 +219,75 @@ SITES = {
         "test_url": "https://medium.com/tag/python",
         "method": "proxy_http",
     },
+    # ── Added to reach 66 presets ──
+    "duckduckgo": {
+        "test_url": "https://duckduckgo.com/?q=residential+proxy",
+        "method": "proxy_http",
+    },
+    "bing": {
+        "test_url": "https://www.bing.com/search?q=web+scraping",
+        "method": "proxy_http",
+    },
+    "yahoo_news": {
+        "test_url": "https://news.yahoo.com/",
+        "method": "proxy_http",
+    },
+    "foxnews": {
+        "test_url": "https://www.foxnews.com/",
+        "method": "proxy_http",
+    },
+    "guardian": {
+        "test_url": "https://www.theguardian.com/world",
+        "method": "proxy_http",
+    },
+    "twitch": {
+        "test_url": "https://www.twitch.tv/directory",
+        "method": "scrapling",
+    },
+    "devto": {
+        "test_url": "https://dev.to/",
+        "method": "proxy_http",
+    },
+    "asos": {
+        "test_url": "https://www.asos.com/men/",
+        "method": "scrapling",
+    },
+    "ikea": {
+        "test_url": "https://www.ikea.com/us/en/cat/sofas-fu003/",
+        "method": "scrapling",
+    },
+    "apple": {
+        "test_url": "https://www.apple.com/shop/buy-iphone",
+        "method": "proxy_http",
+    },
+    "samsung": {
+        "test_url": "https://www.samsung.com/us/smartphones/",
+        "method": "proxy_http",
+    },
+    "coursera": {
+        "test_url": "https://www.coursera.org/courses?query=python",
+        "method": "scrapling",
+    },
+    "zappos": {
+        "test_url": "https://www.zappos.com/men-shoes",
+        "method": "scrapling",
+    },
+    "target_tech": {
+        "test_url": "https://www.target.com/c/electronics/-/N-5xtg6",
+        "method": "proxy_http",
+    },
+    "hulu": {
+        "test_url": "https://www.hulu.com/welcome",
+        "method": "scrapling",
+    },
+    "walmart_grocery": {
+        "test_url": "https://www.walmart.com/cp/food/976759",
+        "method": "scrapling",
+    },
+    "microsoft": {
+        "test_url": "https://www.microsoft.com/en-us/windows",
+        "method": "proxy_http",
+    },
 }
 
 
