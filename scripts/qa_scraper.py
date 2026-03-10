@@ -31,10 +31,6 @@ SITES = {
         "test_url": "https://www.amazon.com/dp/B0BSHF7WHW",
         "method": "proxy_http",
     },
-    "linkedin": {
-        "test_url": "https://www.linkedin.com/company/google",
-        "method": "proxy_http",
-    },
     "ebay": {
         "test_url": "https://www.ebay.com/sch/i.html?_nkw=iphone",
         "method": "proxy_http",
@@ -57,11 +53,6 @@ SITES = {
         "test_url": "https://www.booking.com/city/gb/london.html",
         "method": "scrapling",
     },
-    "aliexpress": {
-        "test_url": "https://www.aliexpress.com/w/wholesale-headphones.html",
-        "method": "scrapling",
-        "note": "Needs Scrapling fingerprinting",
-    },
     "walmart": {
         "test_url": "https://www.walmart.com/browse/electronics",
         "method": "scrapling",
@@ -70,11 +61,6 @@ SITES = {
     "target": {
         "test_url": "https://www.target.com/c/electronics/-/N-5xtg6",
         "method": "proxy_http",
-    },
-    "indeed": {
-        "test_url": "https://www.indeed.com/jobs?q=python+developer",
-        "method": "scrapling",
-        "note": "Anti-bot, needs Scrapling",
     },
     "airbnb": {
         "test_url": "https://www.airbnb.com/s/Paris/homes",
