@@ -60,7 +60,7 @@ curl -s https://iploop.io/api/v1/dashboard/summary -H "Authorization: Bearer $TO
 ```
 ```json
 {
-  "user": {"firstName": "QA", "email": "qa@iploop.io", "role": "customer"},
+  "user": {"firstName": "John", "email": "john@example.com", "role": "customer"},
   "plan": {"name": "Starter", "includedGb": 5},
   "usage": {"requests": 0, "gb": "0.00", "successRate": "100.0"},
   "activeKeys": 1,
