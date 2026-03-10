@@ -27,10 +27,6 @@ SITES = {
         "test_url": "https://query1.finance.yahoo.com/v8/finance/chart/TSLA?interval=1d&range=1d",
         "method": "api",
     },
-    "google": {
-        "test_url": "https://www.google.com/search?q=bitcoin+price&hl=en",
-        "method": "scrapling",
-    },
     "amazon": {
         "test_url": "https://www.amazon.com/dp/B0BSHF7WHW",
         "method": "proxy_http",
@@ -93,10 +89,6 @@ SITES = {
         "test_url": "https://nowsecure.nl",
         "method": "proxy_http",
     },
-    "datadome_test": {
-        "test_url": "https://www.datadome.co/",
-        "method": "scrapling",
-    },
     "pinterest": {
         "test_url": "https://www.pinterest.com/search/pins/?q=cars",
         "method": "scrapling",
@@ -110,22 +102,6 @@ SITES = {
         "test_url": "https://www.allbirds.com/collections/mens",
         "method": "proxy_http",
     },
-    "yelp": {
-        "test_url": "https://www.yelp.com/search?find_desc=pizza&find_loc=New+York",
-        "method": "scrapling",
-        "note": "Heavy anti-bot",
-    },
-    "glassdoor": {
-        "test_url": "https://www.glassdoor.com/Reviews/Google-Reviews-E9079.htm",
-        "method": "scrapling",
-        "note": "Heavy anti-bot",
-    },
-    "etsy": {
-        "test_url": "https://www.etsy.com/search?q=handmade",
-        "method": "scrapling",
-        "note": "Anti-bot",
-    },
-    # ── Original presets restored ──
     "imdb": {
         "test_url": "https://www.imdb.com/title/tt0111161/",
         "method": "proxy_http",
@@ -194,11 +170,6 @@ SITES = {
         "test_url": "https://www.cnn.com/",
         "method": "proxy_http",
     },
-    "bloomberg": {
-        "test_url": "https://www.bloomberg.com/markets",
-        "method": "scrapling",
-        "note": "Paywall + anti-bot",
-    },
     "trustpilot": {
         "test_url": "https://www.trustpilot.com/review/amazon.com",
         "method": "proxy_http",
@@ -215,7 +186,6 @@ SITES = {
         "test_url": "https://newyork.craigslist.org/search/sss?query=laptop",
         "method": "proxy_http",
     },
-    # ── New additions (40+ total) ──
     "nike": {
         "test_url": "https://www.nike.com/w/mens-shoes-nik1zy7ok",
         "method": "scrapling",
@@ -227,18 +197,6 @@ SITES = {
     },
     "homedepot": {
         "test_url": "https://www.homedepot.com/b/Appliances/N-5yc1v",
-        "method": "scrapling",
-    },
-    "realtor": {
-        "test_url": "https://www.realtor.com/realestateandhomes-search/New-York_NY",
-        "method": "scrapling",
-    },
-    "tripadvisor": {
-        "test_url": "https://www.tripadvisor.com/Hotels-g60763-New_York_City_New_York-Hotels.html",
-        "method": "scrapling",
-    },
-    "expedia": {
-        "test_url": "https://www.expedia.com/Hotel-Search?destination=London",
         "method": "scrapling",
     },
     "costco": {
@@ -257,10 +215,6 @@ SITES = {
         "test_url": "https://www.bbc.com/news",
         "method": "proxy_http",
     },
-    "reuters": {
-        "test_url": "https://www.reuters.com/markets/",
-        "method": "proxy_http",
-    },
     "nytimes": {
         "test_url": "https://www.nytimes.com/",
         "method": "scrapling",
@@ -273,18 +227,6 @@ SITES = {
     "medium": {
         "test_url": "https://medium.com/tag/python",
         "method": "proxy_http",
-    },
-    "producthunt": {
-        "test_url": "https://www.producthunt.com/",
-        "method": "proxy_http",
-    },
-    "fiverr": {
-        "test_url": "https://www.fiverr.com/categories/programming-tech",
-        "method": "scrapling",
-    },
-    "upwork": {
-        "test_url": "https://www.upwork.com/freelance-jobs/python/",
-        "method": "scrapling",
     },
 }
 
