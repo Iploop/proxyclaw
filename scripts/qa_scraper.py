@@ -40,6 +40,11 @@ SITES = {
         "test_url": "https://x.com/NASA",
         "method": "scrapling",
     },
+    "linkedin": {
+        "test_url": "https://www.linkedin.com/company/google",
+        "method": "scrapling",
+    },
+
     "tiktok": {
         "test_url": "https://www.tiktok.com/@khaby.lame",
         "method": "proxy_http",
@@ -405,6 +410,9 @@ def extract_scrapling_generic(url: str, proxy_url: Optional[str], site_name: str
     # Don't count meta robots tag as blocked
     if is_blocked and 'name="robots"' in body[:3000]:
         is_blocked = any(w in lower_body for w in blocked_words if w != "robot")
+    # Large pages with sign-in links aren't blocked (LinkedIn, etc)
+    if is_blocked and len(body) > 100000:
+        is_blocked = False
     return {
         "success": len(body) > 500 and status >= 200 and status < 400 and not is_blocked,
         "title": title[:100],
