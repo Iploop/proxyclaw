@@ -20,6 +20,17 @@ npm install iploop
 clawhub install proxyclaw
 ```
 
+## Get Your API Key (free)
+
+1. **Sign up** at [iploop.io/signup.html](https://iploop.io/signup.html) — takes 30 seconds
+2. **Get your key** from the dashboard → API Keys section
+3. **Set it:**
+```bash
+export IPLOOP_API_KEY="your_key_here"
+```
+
+Free tier includes **0.5 GB** — no credit card needed. Or [earn unlimited credits](REWARDS.md) by running a Docker node.
+
 ## Quick Start
 
 ### Python
