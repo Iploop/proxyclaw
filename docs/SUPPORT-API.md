@@ -2,7 +2,7 @@
 
 Everything a bot needs to self-service: diagnose issues, check status, get help.
 
-Base URL: `https://iploop.io/api/v1`
+Base URL: `https://api.iploop.io/api/v1`
 
 ---
 
@@ -36,7 +36,7 @@ curl -s https://gateway.iploop.io:9443/stats
 
 ### Customer API Health (no auth)
 ```bash
-curl -s https://iploop.io/api/v1/health
+curl -s https://api.iploop.io/api/v1/health
 ```
 
 ---
@@ -45,7 +45,7 @@ curl -s https://iploop.io/api/v1/health
 
 ### Check Your Plan & Usage
 ```bash
-curl -s https://iploop.io/api/v1/usage -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/usage -H "Authorization: Bearer $TOKEN"
 ```
 ```json
 {
@@ -56,7 +56,7 @@ curl -s https://iploop.io/api/v1/usage -H "Authorization: Bearer $TOKEN"
 
 ### Full Dashboard Summary
 ```bash
-curl -s https://iploop.io/api/v1/dashboard/summary -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/dashboard/summary -H "Authorization: Bearer $TOKEN"
 ```
 ```json
 {
@@ -70,7 +70,7 @@ curl -s https://iploop.io/api/v1/dashboard/summary -H "Authorization: Bearer $TO
 
 ### List API Keys
 ```bash
-curl -s https://iploop.io/api/v1/api-keys -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/api-keys -H "Authorization: Bearer $TOKEN"
 ```
 
 ---
@@ -85,12 +85,12 @@ curl -x "http://user:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.o
 
 ### Check Your Proxy Config
 ```bash
-curl -s https://iploop.io/api/v1/proxy/config -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/proxy/config -H "Authorization: Bearer $TOKEN"
 ```
 
 ### Available Countries
 ```bash
-curl -s https://iploop.io/api/v1/nodes/countries -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/nodes/countries -H "Authorization: Bearer $TOKEN"
 ```
 
 ### IP Check
@@ -111,7 +111,7 @@ curl -s https://iploop.io/location
 
 ### Check Balance
 ```bash
-curl -s https://iploop.io/api/v1/earn/balance -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/earn/balance -H "Authorization: Bearer $TOKEN"
 ```
 ```json
 {"balance": 8.30, "totalEarned": 12.50, "pending": 0}
@@ -119,7 +119,7 @@ curl -s https://iploop.io/api/v1/earn/balance -H "Authorization: Bearer $TOKEN"
 
 ### Earning Stats
 ```bash
-curl -s https://iploop.io/api/v1/earn/stats -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/earn/stats -H "Authorization: Bearer $TOKEN"
 ```
 ```json
 {
@@ -133,12 +133,12 @@ curl -s https://iploop.io/api/v1/earn/stats -H "Authorization: Bearer $TOKEN"
 
 ### List Devices
 ```bash
-curl -s https://iploop.io/api/v1/earn/devices -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/earn/devices -H "Authorization: Bearer $TOKEN"
 ```
 
 ### Register Device
 ```bash
-curl -X POST https://iploop.io/api/v1/earn/devices \
+curl -X POST https://api.iploop.io/api/v1/earn/devices \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Server", "deviceType": "linux"}'
@@ -146,7 +146,7 @@ curl -X POST https://iploop.io/api/v1/earn/devices \
 
 ### Cash Out (min $10)
 ```bash
-curl -X POST https://iploop.io/api/v1/earn/cashout \
+curl -X POST https://api.iploop.io/api/v1/earn/cashout \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"amount": 10, "method": "paypal", "destination": "you@paypal.com"}'
@@ -156,7 +156,7 @@ curl -X POST https://iploop.io/api/v1/earn/cashout \
 
 ## 5. Pricing (no auth)
 ```bash
-curl -s https://iploop.io/api/v1/billing
+curl -s https://api.iploop.io/api/v1/billing
 ```
 Returns all plans: Starter ($4.99/GB), Professional ($3.99/GB), Business ($2.99/GB), Enterprise.
 
@@ -178,7 +178,7 @@ Returns all plans: Starter ($4.99/GB), Professional ($3.99/GB), Business ($2.99/
 
 ```bash
 # 1. Register
-TOKEN=$(curl -s -X POST https://iploop.io/api/v1/auth/register \
+TOKEN=$(curl -s -X POST https://api.iploop.io/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"bot@example.com","password":"Pass123!","firstName":"Bot","lastName":"Agent"}' \
   | python3 -c "import json,sys; print(json.load(sys.stdin)['token'])")
@@ -190,16 +190,16 @@ curl -s https://gateway.iploop.io:9443/health
 curl -x "http://user:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # 4. Check usage
-curl -s https://iploop.io/api/v1/usage -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/usage -H "Authorization: Bearer $TOKEN"
 
 # 5. Start earning
-curl -X POST https://iploop.io/api/v1/earn/devices \
+curl -X POST https://api.iploop.io/api/v1/earn/devices \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"name":"My Node","deviceType":"linux"}'
 
 # 6. Monitor balance
-curl -s https://iploop.io/api/v1/earn/balance -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/earn/balance -H "Authorization: Bearer $TOKEN"
 ```
 
 ---

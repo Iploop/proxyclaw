@@ -33,16 +33,16 @@ curl -s https://gateway.iploop.io:9443/health | python3 -m json.tool
 
 ```bash
 # Login first
-TOKEN=$(curl -s -X POST https://iploop.io/api/v1/auth/login \
+TOKEN=$(curl -s -X POST https://api.iploop.io/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"you@example.com","password":"YourPass"}' \
   | python3 -c "import json,sys; print(json.load(sys.stdin)['token'])")
 
 # Check balance
-curl -s https://iploop.io/api/v1/earn/balance -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/earn/balance -H "Authorization: Bearer $TOKEN"
 
 # List devices
-curl -s https://iploop.io/api/v1/earn/devices -H "Authorization: Bearer $TOKEN"
+curl -s https://api.iploop.io/api/v1/earn/devices -H "Authorization: Bearer $TOKEN"
 ```
 
 ## Standalone Binary

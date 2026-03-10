@@ -90,7 +90,7 @@ Stealth mode uses [Scrapling](https://github.com/D4Vinci/Scrapling) browser fing
 ## API
 
 ### Customer API
-Full REST API at `https://iploop.io/api/v1/` — see [docs/API.md](docs/API.md)
+Full REST API at `https://api.iploop.io/api/v1/` — see [docs/API.md](docs/API.md)
 
 | Endpoint | Auth | Description |
 |----------|------|-------------|

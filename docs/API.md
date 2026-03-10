@@ -1,6 +1,6 @@
 # IPLoop API Reference
 
-Base URL: `https://iploop.io/api/v1`
+Base URL: `https://api.iploop.io/api/v1`
 
 All authenticated endpoints require: `Authorization: Bearer <JWT_TOKEN>`
 
@@ -10,7 +10,7 @@ All authenticated endpoints require: `Authorization: Bearer <JWT_TOKEN>`
 
 ### POST /auth/register
 ```bash
-curl -X POST https://iploop.io/api/v1/auth/register \
+curl -X POST https://api.iploop.io/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email": "you@example.com", "password": "Pass123!", "firstName": "John", "lastName": "Doe", "company": "Acme"}'
 ```
@@ -18,7 +18,7 @@ Returns: `{ "user": {...}, "token": "eyJ..." }`
 
 ### POST /auth/login
 ```bash
-curl -X POST https://iploop.io/api/v1/auth/login \
+curl -X POST https://api.iploop.io/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email": "you@example.com", "password": "Pass123!"}'
 ```
@@ -81,7 +81,7 @@ List your registered devices.
 Register a new earning device.
 
 ```bash
-curl -X POST https://iploop.io/api/v1/earn/devices \
+curl -X POST https://api.iploop.io/api/v1/earn/devices \
   -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Server", "deviceType": "linux"}'
@@ -97,7 +97,7 @@ Withdrawal history.
 Request withdrawal (min $10).
 
 ```bash
-curl -X POST https://iploop.io/api/v1/earn/cashout \
+curl -X POST https://api.iploop.io/api/v1/earn/cashout \
   -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"amount": 10, "method": "paypal", "destination": "you@paypal.com"}'
@@ -168,26 +168,26 @@ curl https://gateway.iploop.io:9443/health
 
 ```bash
 # 1. Register
-TOKEN=$(curl -s -X POST https://iploop.io/api/v1/auth/register \
+TOKEN=$(curl -s -X POST https://api.iploop.io/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"bot@example.com","password":"BotPass1!","firstName":"Bot","lastName":"Agent"}' \
   | python3 -c "import json,sys; print(json.load(sys.stdin)['token'])")
 
 # 2. Register earning device
-curl -X POST https://iploop.io/api/v1/earn/devices \
+curl -X POST https://api.iploop.io/api/v1/earn/devices \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"name":"My Node","deviceType":"linux"}'
 
 # 3. Check balance
-curl -s https://iploop.io/api/v1/earn/balance \
+curl -s https://api.iploop.io/api/v1/earn/balance \
   -H "Authorization: Bearer $TOKEN"
 
 # 4. Use proxy
 curl -x "http://user:API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # 5. Cash out (when balance >= $10)
-curl -X POST https://iploop.io/api/v1/earn/cashout \
+curl -X POST https://api.iploop.io/api/v1/earn/cashout \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"amount":10,"method":"paypal","destination":"bot@example.com"}'
