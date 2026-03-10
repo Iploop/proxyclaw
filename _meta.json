@@ -1,0 +1,30 @@
+{
+  "name": "proxyclaw",
+  "version": "2.1.0",
+  "description": "Residential proxy access for AI agents — 2M+ real device IPs across 195+ countries. Free tier included. Earn credits by sharing bandwidth.",
+  "author": "iploop",
+  "license": "MIT",
+  "homepage": "https://proxyclaw.ai",
+  "repository": "https://github.com/Iploop/proxyclaw",
+  "keywords": [
+    "proxy",
+    "residential-proxy",
+    "web-scraping",
+    "anti-bot",
+    "captcha",
+    "geo-targeting",
+    "iploop",
+    "proxyclaw",
+    "ai-agent",
+    "scraping",
+    "unblocking"
+  ],
+  "openclaw": {
+    "emoji": "🌐",
+    "requires": {
+      "bins": ["curl"],
+      "env": ["IPLOOP_API_KEY"]
+    },
+    "primaryEnv": "IPLOOP_API_KEY"
+  }
+}

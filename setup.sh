@@ -7,12 +7,10 @@ echo "=== ProxyClaw Setup ==="
 if [ -z "${IPLOOP_API_KEY:-}" ]; then
   echo "❌ IPLOOP_API_KEY is not set."
   echo ""
-  echo "Get your API key:"
-  echo "  1. Sign up at https://iploop.io"
-  echo "  2. Or via API:"
-  echo '     curl -X POST https://iploop.io/signup.html \'
-  echo '       -H "Content-Type: application/json" \'
-  echo '       -d '"'"'{"email":"you@example.com","password":"your_password"}'"'"
+  echo "Get your free API key:"
+  echo "  1. Sign up at https://iploop.io/signup.html"
+  echo "  2. Go to Dashboard → API Keys"
+  echo "  3. Copy your key"
   echo ""
   echo "Then: export IPLOOP_API_KEY=\"your_key\""
   exit 1
