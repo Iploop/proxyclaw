@@ -1,95 +1,81 @@
-# 🌐 ProxyClaw by IPLoop
+# ProxyClaw by IPLoop
 
-**Residential proxy access for AI agents — powered by 2M+ real device IPs across 195+ countries.**
+Residential proxy skill for AI agents — 2M+ IPs, anti-bot bypass, 64 site presets.
 
-ProxyClaw is an [OpenClaw](https://openclaw.ai) skill that gives your AI agent instant access to any website through real residential IPs. JS rendering, CAPTCHA solving, anti-bot bypass — all built in.
-
-## ⚡ Install
+## Install
 
 ```bash
+# OpenClaw skill
 clawhub install proxyclaw
+
+# Python SDK (recommended)
+pip install iploop[stealth]
 ```
 
-Or manually: copy the `SKILL.md`, `fetch.sh`, and `setup.sh` into your OpenClaw skills directory.
-
-## 🚀 Quick Start
-
-### 1. Get Your Free API Key
-
-Sign up at [iploop.io/signup](https://iploop.io/signup.html) — **0.5 GB free, no credit card required.**
-
-### 2. Start Fetching
-
-```bash
-export IPLOOP_API_KEY="your_api_key"
-
-# Auto-rotating residential IP
-curl -x "http://user:${IPLOOP_API_KEY}@proxy.iploop.io:8880" https://example.com
-
-# Target a country
-curl -x "http://user:${IPLOOP_API_KEY}-country-US@proxy.iploop.io:8880" https://example.com
-
-# Helper script
-./fetch.sh https://example.com --country US --format markdown
-```
-
-### 3. Python SDK
-
-```bash
-pip install iploop
-```
+## Quick Start
 
 ```python
-from iploop import IPLoopClient
+from iploop import IPLoop
 
-client = IPLoopClient(api_key="your_api_key")
-data = client.scrape("https://example.com")
+client = IPLoop(api_key="YOUR_KEY")  # stealth auto-on
+
+# Anti-bot sites just work
+r = client.get("https://www.zillow.com/homes/NYC_rb/")    # ✅ 1.3MB
+r = client.get("https://www.walmart.com/browse/electronics") # ✅ 1MB
+r = client.get("https://www.indeed.com/jobs?q=python")      # ✅ 1.6MB
+
+# Country targeting
+r = client.get("https://example.com", country="DE")
+
+# Sticky session
+s = client.session()
+r1 = s.get("http://httpbin.org/ip")
+r2 = s.get("http://httpbin.org/ip")  # same IP
 ```
 
-## 🌍 Features
+## 64 Site Presets — 89% Success Rate
 
-- **195+ countries** with city, ZIP, ISP, and ASN-level targeting
-- **2M+ residential IPs** from real Android, Windows, Mac, Smart TV devices
-- **99%+ success rate** — real device fingerprints bypass anti-bot systems
-- **< 0.5s avg response** time
-- **Auto IP rotation** — fresh IP every request
-- **HTTP, HTTPS, SOCKS5** support
-- **Browser integration** — Puppeteer, Playwright, Selenium, Scrapy
-- **Earn credits** — share bandwidth via Docker, get free proxy access
+| Category | Sites | Method |
+|----------|-------|--------|
+| **E-commerce** | Amazon, eBay, Walmart, Target, BestBuy, AliExpress, Costco, Nordstrom, Newegg, Wayfair, Nike, Etsy, Shopify | Proxy + Scrapling |
+| **Jobs** | Indeed, Fiverr, Upwork, RemoteOK, Glassdoor | Scrapling |
+| **Real Estate** | Zillow, Realtor, Airbnb, Booking, Expedia, TripAdvisor | Scrapling |
+| **Social** | Reddit, Twitter/X, Instagram, TikTok, Pinterest, LinkedIn, Quora | Scrapling |
+| **News** | CNN, BBC, NYTimes, Bloomberg, Reuters, Medium, ProductHunt | Proxy + Scrapling |
+| **Tech** | GitHub, StackOverflow, HackerNews, NPM, PyPI | Proxy |
+| **APIs** | YouTube, Stocks, CoinGecko, Spotify, XKCD, SpaceX, Pokemon, Weather, ExchangeRate | Direct API |
+| **Other** | Google, Wikipedia, IMDb, Steam, Goodreads, Trustpilot, Craigslist, Archive.org, HomeDepot, Cloudflare | Proxy + Scrapling |
 
-## 💰 Pricing
+### Anti-Bot Bypass
 
-| Plan | Per GB | Rate Limit |
-|------|--------|------------|
-| **Free** | $0 | 30 req/min (0.5 GB included) |
-| **Starter** | $4.50 | 120 req/min |
-| **Growth** | $3.50 | 300 req/min |
-| **Business** | $2.50 | 600 req/min |
-| **Enterprise** | Custom | 1000 req/min |
+Stealth mode uses [Scrapling](https://github.com/D4Vinci/Scrapling) browser fingerprinting + IPLoop residential IPs. This combo cracks sites that block normal proxies:
 
-## 🐳 Earn Free Proxy Credits
+| Without Stealth | With Stealth |
+|----------------|-------------|
+| 73% success    | 89% success |
+| Blocked by Zillow, Walmart, Indeed | ✅ All pass |
 
-Share unused bandwidth and earn credits:
+## Pricing
+
+| Plan | Price | Data |
+|------|-------|------|
+| Free | $0 | 0.5 GB |
+| Starter | $2.50/GB | Pay as you go |
+| Pro | $4.00/GB | Priority routing |
+| Use code **OPENCLAW** for 20% off |
+
+## Earn Free Credits
+
+Share bandwidth via Docker → earn proxy credits:
 
 ```bash
-docker run -d --name iploop-node --restart=always ultronloop2026/iploop-node:latest
+docker run -d ultronloop2026/iploop-node -token YOUR_TOKEN
 ```
 
-**1 GB shared = 1 GB of proxy access.** Runs on Linux, macOS, Windows, Raspberry Pi.
+## Links
 
-## 📖 Documentation
-
-- **Full skill docs:** [SKILL.md](./SKILL.md)
-- **Support API:** [docs/SUPPORT-API.md](./docs/SUPPORT-API.md)
-- **ProxyClaw website:** [proxyclaw.ai](https://proxyclaw.ai)
-- **IPLoop platform:** [iploop.io](https://iploop.io)
-- **Docker Hub:** [ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
-
-## 📧 Support
-
-- Email: partners@iploop.io
-- Website: [iploop.io](https://iploop.io)
-
-## License
-
-MIT — see [LICENSE](./LICENSE)
+- 🌐 [proxyclaw.ai](https://proxyclaw.ai)
+- 📖 [Docs](https://proxyclaw.ai/docs.html)
+- 🐍 [Python SDK](https://github.com/Iploop/iploop-python)
+- 📦 [Node.js SDK](https://github.com/Iploop/iploop-node-sdk)
+- 🏠 [Sign up](https://iploop.io/signup.html)
