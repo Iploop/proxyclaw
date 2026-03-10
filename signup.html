@@ -52,7 +52,7 @@
 
   <div class="features">
     <div class="feat"><div class="num">2M+</div><div class="label">Residential IPs</div></div>
-    <div class="feat"><div class="num">50+</div><div class="label">Countries</div></div>
+    <div class="feat"><div class="num">195+</div><div class="label">Countries</div></div>
     <div class="feat"><div class="num">0.5 GB</div><div class="label">Free to Start</div></div>
     <div class="feat"><div class="num">~70 GB</div><div class="label">Earn Monthly</div></div>
   </div>
@@ -110,7 +110,7 @@
 </div>
 
 <script>
-const API = 'https://gateway.iploop.io:9443';
+const API = 'https://api.iploop.io';
 
 async function doSignup(e) {
   e.preventDefault();
@@ -121,12 +121,14 @@ async function doSignup(e) {
   btn.textContent = 'Creating account...';
 
   try {
-    const res = await fetch(API + '/api/auth/signup', {
+    const res = await fetch(API + '/api/v1/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email: document.getElementById('email').value,
-        password: document.getElementById('password').value
+        password: document.getElementById('password').value,
+        firstName: document.getElementById('email').value.split('@')[0],
+        lastName: 'User'
       })
     });
     const data = await res.json();
@@ -139,16 +141,25 @@ async function doSignup(e) {
       return;
     }
 
-    // Success
+    // Success — now generate API key
+    const token = data.token;
+    const keyRes = await fetch(API + '/api/v1/auth/api-keys', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify({ name: 'default', permissions: ['proxy'] })
+    });
+    const keyData = await keyRes.json();
+    const apiKey = keyData.apiKey ? keyData.apiKey.key : 'Check dashboard for your API key';
+
     document.getElementById('signup-form').style.display = 'none';
     document.getElementById('success-panel').style.display = 'block';
-    document.getElementById('show-api-key').textContent = data.api_key;
-    document.getElementById('show-curl').textContent = `curl -x "http://user:${data.api_key}@gateway.iploop.io:8880" https://httpbin.org/ip`;
+    document.getElementById('show-api-key').textContent = apiKey;
+    document.getElementById('show-curl').textContent = `curl -x "http://user:${apiKey}@proxy.iploop.io:8880" https://httpbin.org/ip`;
 
     // Save for dashboard
-    localStorage.setItem('iploop_api_key', data.api_key);
-    localStorage.setItem('iploop_token', data.token);
-    localStorage.setItem('iploop_email', data.email);
+    localStorage.setItem('iploop_api_key', apiKey);
+    localStorage.setItem('iploop_token', token);
+    localStorage.setItem('iploop_email', data.user ? data.user.email : '');
   } catch (ex) {
     err.textContent = 'Network error. Please try again.';
     err.style.display = 'block';
