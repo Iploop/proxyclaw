@@ -187,7 +187,7 @@ SITES = {
         "method": "scrapling",
     },
     "homedepot": {
-        "test_url": "https://www.homedepot.com/b/Appliances/N-5yc1v",
+        "test_url": "https://www.homedepot.com/",
         "method": "scrapling",
     },
     "costco": {
