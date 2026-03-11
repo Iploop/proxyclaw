@@ -11,7 +11,7 @@ Residential proxy platform for AI agents, bots & data pipelines — 2M+ resident
 
 ```bash
 # Python SDK (recommended — includes anti-bot stealth mode)
-pip install iploop[stealth]
+pip install iploop-sdk[stealth]
 
 # Node.js SDK
 npm install iploop
@@ -170,7 +170,7 @@ Use code **OPENCLAW** for 20% off.
 - 🌐 [proxyclaw.ai](https://proxyclaw.ai) — Landing page
 - 📖 [Docs](https://proxyclaw.ai/docs.html) — API documentation
 - 🏠 [iploop.io](https://iploop.io) — Dashboard & sign up
-- 🐍 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop[stealth]`
+- 🐍 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop-sdk[stealth]`
 - 📦 [Node.js SDK](https://github.com/Iploop/iploop-node-sdk) — `npm install iploop`
 - 🐳 [Node Agent](https://github.com/Iploop/iploop-node) — Earn credits
 - 🐳 [Docker Hub](https://hub.docker.com/r/ultronloop2026/iploop-node)
