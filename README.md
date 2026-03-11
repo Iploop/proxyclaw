@@ -74,21 +74,21 @@ Tested 5× back-to-back. Every preset passes every time.
 
 | Category | Sites | Method |
 |----------|-------|--------|
-| **E-commerce** | Amazon, eBay, Walmart, Target, BestBuy, Costco, Nordstrom, Newegg, Wayfair, Nike, Shopify, Zappos, ASOS, IKEA, Apple, Samsung | Proxy + Scrapling |
-| **Social** | Reddit, Twitter/X, Instagram, TikTok, Pinterest, LinkedIn, Quora, Medium, Twitch | Scrapling |
+| **E-commerce** | Amazon, eBay, Walmart, Target, BestBuy, Costco, Nordstrom, Newegg, Wayfair, Nike, Shopify, Zappos, ASOS, IKEA, Apple, Samsung | Proxy + Stealth |
+| **Social** | Reddit, Twitter/X, Instagram, TikTok, Pinterest, LinkedIn, Quora, Medium, Twitch | Stealth Mode |
 | **News** | CNN, BBC, NYTimes, Fox News, The Guardian, Yahoo News, Dev.to | Proxy |
 | **Tech** | GitHub, StackOverflow, HackerNews, NPM, PyPI, Coursera | Proxy |
-| **Real Estate** | Zillow, Airbnb, Booking.com, Craigslist | Scrapling |
+| **Real Estate** | Zillow, Airbnb, Booking.com, Craigslist | Stealth Mode |
 | **APIs** | YouTube, Stocks, CoinGecko, Spotify, XKCD, SpaceX, Pokemon, Weather, ExchangeRate, RemoteOK | Direct API |
-| **Other** | Wikipedia, IMDb, Steam, Goodreads, Trustpilot, Archive.org, HomeDepot, DuckDuckGo, Bing, Hulu, Microsoft | Proxy + Scrapling |
+| **Other** | Wikipedia, IMDb, Steam, Goodreads, Trustpilot, Archive.org, HomeDepot, DuckDuckGo, Bing, Hulu, Microsoft | Proxy + Stealth |
 
 ### Anti-Bot Bypass
 
-Stealth mode uses [Scrapling](https://github.com/D4Vinci/Scrapling) browser fingerprinting + residential IPs:
+Stealth mode uses advanced browser fingerprinting + residential IPs:
 
 - Bypasses Cloudflare, Akamai, and most anti-bot systems
 - 66/66 sites pass (100%) with stealth mode
-- Auto-detects: if Scrapling is installed, stealth activates
+- Auto-detects stealth capabilities and activates automatically
 
 ## API
 
