@@ -159,7 +159,7 @@ Options: `country-XX`, `city-NAME`, `session-ID`, `sesstype-sticky`
 
 ```bash
 curl https://gateway.iploop.io:9443/health
-# → {"connected_nodes": 9500+, "status": "healthy"}
+# → {"connected_nodes": 23000+, "status": "healthy"}
 ```
 
 ---

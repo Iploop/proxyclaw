@@ -18,10 +18,11 @@ fi
 
 echo "✅ IPLOOP_API_KEY is set"
 
-# Test connectivity
+# Test connectivity — auth passed via --proxy-user to prevent exposure in ps aux
 echo "Testing proxy connectivity..."
 RESULT=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 \
-  -x "http://user:${IPLOOP_API_KEY}@proxy.iploop.io:8880" \
+  --proxy "http://proxy.iploop.io:8880" \
+  --proxy-user "user:${IPLOOP_API_KEY}" \
   https://httpbin.org/ip 2>/dev/null || echo "000")
 
 if [ "$RESULT" = "200" ]; then
@@ -39,4 +40,4 @@ else
 fi
 
 echo ""
-echo "Setup complete! Try: ./fetch.sh https://example.com"
+echo "✅ ProxyClaw is ready"

@@ -1,10 +1,10 @@
 # ProxyClaw by IPLoop
 
-Residential proxy platform for AI agents, bots & data pipelines — 1M+ residential IPs, 195+ countries, anti-bot bypass.
+Residential proxy platform for AI agents, bots & data pipelines — 2M+ residential IPs, 195+ countries, anti-bot bypass.
 
 [![QA](https://img.shields.io/badge/QA-66%2F66%20sites-brightgreen)](scripts/qa_scraper.py)
-[![Python](https://img.shields.io/badge/Python%20SDK-v1.5.0-blue)](https://github.com/Iploop/iploop-python)
-[![Node.js](https://img.shields.io/badge/Node.js%20SDK-v1.1.1-blue)](https://github.com/Iploop/iploop-node-sdk)
+[![Python](https://img.shields.io/badge/Python%20SDK-v1.6.0-blue)](https://github.com/Iploop/iploop-python)
+[![Node.js](https://img.shields.io/badge/Node.js%20SDK-v1.0.3-blue)](https://github.com/Iploop/iploop-node-sdk)
 [![Docker](https://img.shields.io/docker/pulls/ultronloop2026/iploop-node)](https://hub.docker.com/r/ultronloop2026/iploop-node)
 
 ## Install
@@ -118,7 +118,7 @@ Auth format: `user:APIKEY-country-XX-city-NAME-session-ID@proxy.iploop.io:8880`
 ### Gateway Health
 ```bash
 curl https://gateway.iploop.io:9443/health
-# → {"connected_nodes": 9600+, "status": "healthy"}
+# → {"connected_nodes": 23000+, "status": "healthy"}
 ```
 
 ## Earn Free Credits 💰
@@ -157,12 +157,12 @@ Use code **OPENCLAW** for 20% off.
 
 | Metric | Value |
 |--------|-------|
-| Residential IP pool | 1,000,000+ |
-| Connected nodes | 9,600+ |
-| Daily unique IPs | 77,000+ |
+| Residential IP pool | 2,000,000+ |
+| Connected nodes | 23,000+ |
+| Daily unique IPs | 98,000+ |
 | Countries | 195+ |
 | Protocols | HTTP, HTTPS, SOCKS5 |
-| Device types | Android, Windows |
+| Device types | Android, Windows, Mac, Smart TV |
 | QA success rate | 100% (66/66 sites) |
 
 ## Links
