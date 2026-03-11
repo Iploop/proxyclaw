@@ -40,13 +40,11 @@ if [ -z "$URL" ]; then
 fi
 
 # ── Input validation ──
-# Validate URL (must start with http:// or https://)
 if [[ ! "$URL" =~ ^https?:// ]]; then
   echo "Error: URL must start with http:// or https://" >&2
   exit 1
 fi
 
-# Normalize and validate country code (exactly 2 uppercase letters)
 if [ -n "$COUNTRY" ]; then
   COUNTRY="${COUNTRY^^}"
   if [[ ! "$COUNTRY" =~ ^[A-Z]{2}$ ]]; then
@@ -55,13 +53,11 @@ if [ -n "$COUNTRY" ]; then
   fi
 fi
 
-# Validate timeout (positive integer 1-120)
 if [[ ! "$TIMEOUT" =~ ^[0-9]+$ ]] || [ "$TIMEOUT" -lt 1 ] || [ "$TIMEOUT" -gt 120 ]; then
   echo "Error: Timeout must be 1-120 seconds" >&2
   exit 1
 fi
 
-# Validate format
 if [[ "$FORMAT" != "raw" && "$FORMAT" != "markdown" ]]; then
   echo "Error: Format must be 'raw' or 'markdown'" >&2
   exit 1
@@ -76,7 +72,6 @@ if [ -z "${IPLOOP_API_KEY:-}" ]; then
 fi
 
 # ── Build proxy auth ──
-# Auth is passed via --proxy-user to prevent exposure in `ps aux`
 AUTH="user:${IPLOOP_API_KEY}"
 [ -n "$COUNTRY" ]    && AUTH="${AUTH}-country-${COUNTRY}"
 [ -n "$CITY" ]       && AUTH="${AUTH}-city-${CITY}"
@@ -88,7 +83,6 @@ TMPFILE=$(mktemp)
 trap 'rm -f "$TMPFILE"' EXIT
 
 # ── Fetch ──
-# %{content_type} captured in-band — no second request needed
 CURL_OUT=$(curl -s -o "$TMPFILE" -w "%{http_code} %{content_type}" \
   --max-time "$TIMEOUT" \
   --proxy "http://proxy.iploop.io:8880" \
@@ -114,20 +108,36 @@ CONTENT=$(cat "$TMPFILE")
 
 # ── Output ──
 if [ "$FORMAT" = "markdown" ]; then
-  # Only attempt HTML conversion for text/html responses
   IS_HTML=false
   [[ "$CONTENT_TYPE" == *"text/html"* ]] && IS_HTML=true
-  # Fallback: sniff content if Content-Type header was absent
   if [ "$IS_HTML" = false ] && echo "$CONTENT" | grep -qi '<html'; then
     IS_HTML=true
   fi
 
   if [ "$IS_HTML" = true ]; then
-    if command -v nhm &>/dev/null; then
-      echo "$CONTENT" | nhm
+    # Convert HTML to markdown using node if available, otherwise basic strip
+    if command -v node &>/dev/null; then
+      echo "$CONTENT" | node -e "
+        const c=[];
+        process.stdin.on('data',d=>c.push(d));
+        process.stdin.on('end',()=>{
+          let h=Buffer.concat(c).toString();
+          h=h.replace(/<script[\s\S]*?<\/script>/gi,'');
+          h=h.replace(/<style[\s\S]*?<\/style>/gi,'');
+          h=h.replace(/<br\s*\/?>/gi,'\n');
+          h=h.replace(/<\/p>/gi,'\n\n');
+          h=h.replace(/<\/h[1-6]>/gi,'\n\n');
+          h=h.replace(/<\/li>/gi,'\n');
+          h=h.replace(/<li[^>]*>/gi,'- ');
+          h=h.replace(/<h([1-6])[^>]*>/gi,(m,n)=>'#'.repeat(+n)+' ');
+          h=h.replace(/<a[^>]+href=[\"']([^\"']+)[\"'][^>]*>([^<]*)<\/a>/gi,'[\$2](\$1)');
+          h=h.replace(/<[^>]+>/g,'');
+          h=h.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'\"').replace(/&#39;/g,\"'\").replace(/&nbsp;/g,' ');
+          h=h.replace(/\n{3,}/g,'\n\n').trim();
+          console.log(h);
+        });"
     else
-      # Fallback: remove <script>/<style> blocks, strip remaining tags
-      echo "⚠️  nhm not installed — using basic HTML stripper (install: npm install -g node-html-markdown)" >&2
+      # Fallback: basic HTML tag stripper
       echo "$CONTENT" \
         | sed -e '/<script/,/<\/script>/d' \
               -e '/<style/,/<\/style>/d' \
@@ -135,7 +145,6 @@ if [ "$FORMAT" = "markdown" ]; then
               -e '/^[[:space:]]*$/d' || true
     fi
   else
-    # Not HTML (JSON, plain text, etc.) — output as-is
     echo "$CONTENT"
   fi
 else
