@@ -2,10 +2,13 @@
 
 Residential proxy platform for AI agents, bots & data pipelines — 2M+ residential IPs, 195+ countries, anti-bot bypass.
 
+[![GitHub stars](https://img.shields.io/github/stars/Iploop/proxyclaw?style=social)](https://github.com/Iploop/proxyclaw)
+[![npm](https://img.shields.io/npm/v/iploop?label=npm&color=CB3837)](https://npmjs.com/package/iploop)
+[![PyPI](https://img.shields.io/pypi/v/iploop-sdk?label=PyPI&color=3775A9)](https://pypi.org/project/iploop-sdk/)
+[![ClawHub](https://img.shields.io/badge/ClawHub-proxyclaw-7B61FF)](https://clawhub.ai/skills/proxyclaw)
+[![Docker](https://img.shields.io/docker/pulls/ultronloop2026/iploop-node?label=Docker)](https://hub.docker.com/r/ultronloop2026/iploop-node)
 [![QA](https://img.shields.io/badge/QA-66%2F66%20sites-brightgreen)](scripts/qa_scraper.py)
-[![Python](https://img.shields.io/badge/Python%20SDK-v1.6.0-blue)](https://github.com/Iploop/iploop-python)
-[![Node.js](https://img.shields.io/badge/Node.js%20SDK-v1.0.3-blue)](https://github.com/Iploop/iploop-node-sdk)
-[![Docker](https://img.shields.io/docker/pulls/ultronloop2026/iploop-node)](https://hub.docker.com/r/ultronloop2026/iploop-node)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## Install
 
