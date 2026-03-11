@@ -23,7 +23,7 @@ clawhub install proxyclaw
 ## Get Your API Key (free)
 
 1. **Sign up** at [iploop.io/signup.html](https://iploop.io/signup.html) — takes 30 seconds
-2. **Get your key** from the dashboard → API Keys section
+2. **Get your key** from [platform.iploop.io](https://platform.iploop.io) → API Keys section
 3. **Set it:**
 ```bash
 export IPLOOP_API_KEY="your_key_here"
@@ -169,7 +169,7 @@ Use code **OPENCLAW** for 20% off.
 
 - 🌐 [proxyclaw.ai](https://proxyclaw.ai) — Landing page
 - 📖 [Docs](https://proxyclaw.ai/docs.html) — API documentation
-- 🏠 [iploop.io](https://iploop.io) — Dashboard & sign up
+- 🏠 [platform.iploop.io](https://platform.iploop.io) — Platform Dashboard & sign up sign up
 - 🐍 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop-sdk[stealth]`
 - 📦 [Node.js SDK](https://github.com/Iploop/iploop-node-sdk) — `npm install iploop`
 - 🐳 [Node Agent](https://github.com/Iploop/iploop-node) — Earn credits
