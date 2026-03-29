@@ -5,7 +5,7 @@ description: |
 compatibility: Requires network access
 metadata:
   author: iploop
-  version: "2.5.0"
+  version: "2.5.1"
   website: https://proxyclaw.ai
   platform: https://iploop.io
   docker: ultronloop2026/iploop-node
