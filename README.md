@@ -13,8 +13,8 @@ Residential proxy platform for AI agents, bots & data pipelines — 2M+ resident
 ## Install
 
 ```bash
-# Python SDK (recommended — includes anti-bot stealth mode)
-pip install iploop-sdk[stealth]
+# Python SDK (anti-detection built in)
+pip install iploop-sdk
 
 # Node.js SDK
 npm install iploop
@@ -40,7 +40,7 @@ Free tier includes **0.5 GB** — no credit card needed. Or [earn unlimited cred
 ```python
 from iploop import IPLoop
 
-client = IPLoop(api_key="YOUR_KEY", stealth=True)
+client = IPLoop(api_key="YOUR_KEY", country="US")
 
 # Anti-bot sites just work
 r = client.fetch("https://www.zillow.com/homes/NYC_rb/")      # ✅ 1.3MB
@@ -173,7 +173,7 @@ Use code **OPENCLAW** for 20% off.
 - 🌐 [proxyclaw.ai](https://proxyclaw.ai) — Landing page
 - 📖 [Docs](https://proxyclaw.ai/docs.html) — API documentation
 - 🏠 [platform.iploop.io](https://platform.iploop.io) — Platform Dashboard & sign up sign up
-- 🐍 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop-sdk[stealth]`
+- 🐍 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop-sdk`
 - 📦 [Node.js SDK](https://github.com/Iploop/iploop-node-sdk) — `npm install iploop`
 - 🐳 [Node Agent](https://github.com/Iploop/iploop-node) — Earn credits
 - 🐳 [Docker Hub](https://hub.docker.com/r/ultronloop2026/iploop-node)
