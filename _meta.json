@@ -1,7 +1,7 @@
 {
   "name": "proxyclaw",
-  "version": "2.2.0",
-  "description": "Residential proxy access for AI agents — 2M+ real device IPs across 195+ countries. Free tier included. Earn credits by sharing bandwidth.",
+  "version": "2.5.0",
+  "description": "Residential proxy for AI agents — 44K+ real device IPs, 195+ countries, 66 site presets, anti-detection (TLS/JA3 + Chrome fingerprint). Python SDK v1.8.0 + Node.js v1.2.0. Free tier included.",
   "author": "iploop",
   "license": "MIT",
   "homepage": "https://proxyclaw.ai",
@@ -10,15 +10,19 @@
     "residential-proxy",
     "web-scraping",
     "anti-bot",
+    "anti-detection",
+    "tls-fingerprint",
     "captcha",
     "geo-targeting",
     "iploop",
     "proxyclaw",
     "ai-agent",
     "scraping",
-    "unblocking"
+    "unblocking",
+    "site-presets",
+    "chrome-fingerprint"
   ],
-  "tags": ["proxy", "residential", "scraping", "geo-targeting", "web-access"],
+  "tags": ["proxy", "residential", "scraping", "geo-targeting", "web-access", "anti-detection"],
   "openclaw": {
     "emoji": "🌐",
     "requires": {

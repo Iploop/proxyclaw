@@ -5,7 +5,7 @@ description: |
 compatibility: Requires network access
 metadata:
   author: iploop
-  version: "2.2.0"
+  version: "2.5.0"
   website: https://proxyclaw.ai
   platform: https://iploop.io
   docker: ultronloop2026/iploop-node
@@ -145,8 +145,8 @@ curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-
 > ⚠️ **Coming Soon** — The `iploop` Python package is not yet available on PyPI. The examples below show the planned API; check [iploop.io](https://iploop.io) for release status.
 
 ```bash
-pip install iploop-sdk[stealth]   # ← includes anti-bot bypass (recommended)
-pip install iploop-sdk             # basic proxy only
+pip install iploop-sdk   # v1.8.0 — 66 site presets + anti-detection
+# Includes: 14-header Chrome fingerprint, TLS/JA3 spoofing, auto-retry, 66 presets
 ```
 
 ```python
@@ -249,6 +249,6 @@ See [rules/setup.md](./rules/setup.md) for full setup guide and troubleshooting.
 
 - **ProxyClaw:** [proxyclaw.ai](https://proxyclaw.ai)
 - **Sign Up:** [iploop.io/signup](https://iploop.io/signup.html)
-- **Python SDK:** `pip install iploop-sdk[stealth]` *(coming soon — not yet on PyPI)*
+- **Python SDK:** `pip install iploop-sdk` v1.8.0 on PyPI — 66 site presets, Chrome fingerprint, TLS spoofing
 - **Docker Hub:** [ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
 - **Support:** partners@iploop.io
