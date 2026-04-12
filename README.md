@@ -5,6 +5,7 @@ Residential proxy platform for AI agents, bots & data pipelines — 2M+ resident
 [![GitHub stars](https://img.shields.io/github/stars/Iploop/proxyclaw?style=social)](https://github.com/Iploop/proxyclaw)
 [![npm](https://img.shields.io/npm/v/iploop?label=npm&color=CB3837)](https://npmjs.com/package/iploop)
 [![PyPI](https://img.shields.io/pypi/v/iploop-sdk?label=PyPI&color=3775A9)](https://pypi.org/project/iploop-sdk/)
+[![LangChain](https://img.shields.io/badge/LangChain-Integration-2DB9A7)](https://pypi.org/project/langchain-proxyclaw/)
 [![ClawHub](https://img.shields.io/badge/ClawHub-proxyclaw-7B61FF)](https://clawhub.ai/skills/proxyclaw)
 [![Docker](https://img.shields.io/docker/pulls/ultronloop2026/iploop-node?label=Docker)](https://hub.docker.com/r/ultronloop2026/iploop-node)
 [![QA](https://img.shields.io/badge/QA-66%2F66%20sites-brightgreen)](scripts/qa_scraper.py)
@@ -67,6 +68,36 @@ const result = await client.fetch('https://example.com', { country: 'US' });
 ```bash
 curl -x "http://user:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 ```
+
+### LangChain (AI Agents)
+```bash
+pip install langchain-proxyclaw
+```
+
+```python
+from langchain_proxyclaw import ProxyClawTool, ProxyClawScraperTool
+from langchain.agents import initialize_agent, AgentType
+from langchain_openai import ChatOpenAI
+
+# Single tool usage
+tool = ProxyClawTool(api_key="YOUR_KEY")
+result = tool.invoke({
+    "url": "https://example.com",
+    "country": "US"
+})
+
+# Use with an AI agent
+scraper = ProxyClawScraperTool(api_key="YOUR_KEY")
+agent = initialize_agent(
+    [scraper],
+    ChatOpenAI(temperature=0),
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+)
+
+agent.run("Find pricing from https://competitor.com/pricing")
+```
+
+[📚 LangChain Integration Docs](https://python.langchain.com/docs/integrations/tools/proxyclaw) | [PyPI](https://pypi.org/project/langchain-proxyclaw/)
 
 ## 66 Site Presets — 100% Success Rate
 
