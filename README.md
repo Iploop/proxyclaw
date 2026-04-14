@@ -27,11 +27,13 @@ clawhub install proxyclaw
 ## Get Your API Key (free)
 
 1. **Sign up** at [iploop.io/signup.html](https://iploop.io/signup.html) — takes 30 seconds
-2. **Get your key** from [platform.iploop.io](https://platform.iploop.io) → API Keys section
+2. **Get your key** from [platform.iploop.io](https://platform.iploop.io) → API Keys section  
 3. **Set it:**
 ```bash
 export IPLOOP_API_KEY="your_key_here"
 ```
+
+✨ **New Format:** `iploop_{short}_{secret}` — single copy-paste, no more customer_id needed!
 
 Free tier includes **0.5 GB** — no credit card needed. Or [earn unlimited credits](REWARDS.md) by running a Docker node.
 
@@ -66,7 +68,11 @@ const result = await client.fetch('https://example.com', { country: 'US' });
 
 ### curl
 ```bash
-curl -x "http://user:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+# New format (v2) — single key
+curl -x "http://YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+
+# Example:
+# curl -x "http://iploop_fd80eb86_72dabf65...-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 ```
 
 ### LangChain (AI Agents)
@@ -147,7 +153,12 @@ Full REST API at `https://api.iploop.io/api/v1/` — see [docs/API.md](docs/API.
 proxy.iploop.io:8880
 ```
 
-Auth format: `user:APIKEY-country-XX-city-NAME-session-ID@proxy.iploop.io:8880`
+Auth format (v2): `APIKEY-country-XX-city-NAME-session-ID@proxy.iploop.io:8880`
+
+**New format:** `iploop_{short}_{secret}-country-XX@proxy.iploop.io:8880`
+- `short` = first 8 chars of your customer ID
+- `secret` = 40-char random hex
+- Both embedded in one key — just copy and paste!
 
 ### Gateway Health
 ```bash
