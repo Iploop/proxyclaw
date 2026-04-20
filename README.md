@@ -14,11 +14,11 @@ Residential proxy platform for AI agents, bots & data pipelines — 2M+ resident
 ## Install
 
 ```bash
-# Python SDK (anti-detection built in)
-pip install iploop-sdk
+# Python SDK (coming soon)
+# pip install iploop-sdk
 
-# Node.js SDK
-npm install iploop
+# Node.js SDK (coming soon)
+# npm install iploop
 
 # OpenClaw skill
 clawhub install proxyclaw
@@ -69,10 +69,10 @@ const result = await client.fetch('https://example.com', { country: 'US' });
 ### curl
 ```bash
 # New format (v2) — single key
-curl -x "http://YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # Example:
-# curl -x "http://iploop_fd80eb86_72dabf65...-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+# curl -x "http://:iploop_fd80eb86_72dabf65...-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 ```
 
 ### LangChain (AI Agents)
@@ -155,7 +155,7 @@ proxy.iploop.io:8880
 
 Auth format (v2): `APIKEY-country-XX-city-NAME-session-ID@proxy.iploop.io:8880`
 
-**New format:** `iploop_{short}_{secret}-country-XX@proxy.iploop.io:8880`
+**New format:** `:iploop_{short}_{secret}-country-XX@proxy.iploop.io:8880`
 - `short` = first 8 chars of your customer ID
 - `secret` = 40-char random hex
 - Both embedded in one key — just copy and paste!
