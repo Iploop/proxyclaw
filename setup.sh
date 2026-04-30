@@ -22,7 +22,7 @@ echo "✅ IPLOOP_API_KEY is set"
 echo "Testing proxy connectivity..."
 RESULT=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 \
   --proxy "http://proxy.iploop.io:8880" \
-  --proxy-user "user:${IPLOOP_API_KEY}" \
+  --proxy-user "iploop:${IPLOOP_API_KEY}" \
   https://httpbin.org/ip 2>/dev/null || echo "000")
 
 if [ "$RESULT" = "200" ]; then

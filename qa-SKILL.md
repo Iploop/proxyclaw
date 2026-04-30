@@ -123,7 +123,7 @@ python3 scripts/qa_scraper.py --api-key YOUR_KEY --runs 5
 ## Proxy Auth Format
 
 ```
-http://user:APIKEY-country-XX@proxy.iploop.io:8880
+http://iploop:APIKEY-country-XX@proxy.iploop.io:8880
 ```
 
 Parameters: `country-XX`, `city-NAME`, `session-ID`, `sesstype-sticky|rotating`

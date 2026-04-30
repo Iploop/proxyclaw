@@ -148,7 +148,7 @@ Your current proxy configuration.
 
 ### Proxy Endpoint
 ```bash
-curl -x "http://user:API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://iploop:API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 ```
 
 Options: `country-XX`, `city-NAME`, `session-ID`, `sesstype-sticky`
@@ -184,7 +184,7 @@ curl -s https://api.iploop.io/api/v1/earn/balance \
   -H "Authorization: Bearer $TOKEN"
 
 # 4. Use proxy
-curl -x "http://user:API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://iploop:API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # 5. Cash out (when balance >= $10)
 curl -X POST https://api.iploop.io/api/v1/earn/cashout \

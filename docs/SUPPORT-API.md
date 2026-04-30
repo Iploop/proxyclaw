@@ -79,7 +79,7 @@ curl -s https://api.iploop.io/api/v1/api-keys -H "Authorization: Bearer $TOKEN"
 
 ### Quick Proxy Test
 ```bash
-curl -x "http://user:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://iploop:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 # → {"origin": "71.204.49.146"}  (real residential IP)
 ```
 
@@ -166,7 +166,7 @@ Returns all plans: Starter ($4.99/GB), Professional ($3.99/GB), Business ($2.99/
 
 | Error | Cause | Fix |
 |-------|-------|-----|
-| 407 | Invalid API key | Check key format: `user:YOUR_KEY@proxy.iploop.io:8880` |
+| 407 | Invalid API key | Check key format: `iploop:YOUR_KEY@proxy.iploop.io:8880` |
 | 403 | Site blocked | Enable stealth: `IPLoop(api_key=KEY, stealth=True)` |
 | 429 | Rate limited | Slow down or upgrade plan |
 | Timeout | Slow proxy | Try different country: `-country-US` |
@@ -187,7 +187,7 @@ TOKEN=$(curl -s -X POST https://api.iploop.io/api/v1/auth/register \
 curl -s https://gateway.iploop.io:9443/health
 
 # 3. Test proxy
-curl -x "http://user:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://iploop:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # 4. Check usage
 curl -s https://api.iploop.io/api/v1/usage -H "Authorization: Bearer $TOKEN"

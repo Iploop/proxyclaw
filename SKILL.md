@@ -64,6 +64,9 @@ export IPLOOP_API_KEY="your_api_key"
 # Auto-rotate IP every request
 ./fetch.sh https://example.com
 
+# SERP / Google-compatible search in Python
+python examples/python_serp.py "public search query"
+
 # Target a country, get markdown
 ./fetch.sh https://example.com --country US --format markdown
 
@@ -78,7 +81,7 @@ export IPLOOP_API_KEY="your_api_key"
 
 # Or use curl directly
 curl --proxy "http://proxy.iploop.io:8880" \
-     --proxy-user "user:${IPLOOP_API_KEY}" \
+     --proxy-user "iploop:${IPLOOP_API_KEY}" \
      https://example.com
 ```
 
@@ -119,34 +122,32 @@ Append `-country-{CC}` to your API key in the proxy password:
 
 ```bash
 # 195+ countries supported
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-country-US" https://example.com
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-country-DE" https://example.com
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-country-GB" https://example.com
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-country-JP" https://example.com
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-country-BR" https://example.com
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-country-US" https://example.com
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-country-DE" https://example.com
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-country-GB" https://example.com
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-country-JP" https://example.com
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-country-BR" https://example.com
 ```
 
 Advanced targeting (curl-only options also available via `./fetch.sh` flags):
 ```bash
 # City level (--city flag in fetch.sh)
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-country-US-city-newyork" ...
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-country-US-city-newyork" ...
 
 # Sticky session (--session flag in fetch.sh)
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-session-mysession" ...
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-session-mysession" ...
 
 # ISP/ASN targeting (--asn flag in fetch.sh)
-curl --proxy "http://proxy.iploop.io:8880" --proxy-user "user:${IPLOOP_API_KEY}-asn-12345" ...
+curl --proxy "http://proxy.iploop.io:8880" --proxy-user "iploop:${IPLOOP_API_KEY}-asn-12345" ...
 ```
 
 ---
 
 ## 🐍 Python SDK
 
-> ⚠️ **Coming Soon** — The `iploop` Python package is not yet available on PyPI. The examples below show the planned API; check [iploop.io](https://iploop.io) for release status.
-
 ```bash
-pip install iploop-sdk   # v1.8.0 — 66 site presets + anti-detection
-# Includes: 14-header Chrome fingerprint, TLS/JA3 spoofing, auto-retry, 66 presets
+pip install iploop-sdk
+# Includes: Chrome fingerprinting, auto-retry, site presets, and SERP support
 ```
 
 ```python
@@ -159,6 +160,17 @@ r = client.fetch("https://www.zillow.com/homes/NYC_rb/")  # ✅ anti-bot bypasse
 r = client.fetch("https://www.walmart.com/browse/electronics")  # ✅ 1MB+ content
 r = client.fetch("https://www.indeed.com/jobs?q=python")  # ✅ job listings
 
+# SERP / Google-compatible search research
+# Use this instead of raw google.com/search to avoid verification pages.
+results = client.serp.search("public search query", country="US")
+print(results["results"])
+
+# Google compatibility wrapper; uses the safe SERP path by default
+results = client.google.search("public search query", country="US")
+
+# Raw Google is QA-only and may return verification pages
+raw = client.google.search("public search query", country="US", direct=True)
+
 # Country targeting
 r = client.fetch("https://example.com", country="DE")
 
@@ -169,7 +181,7 @@ r2 = session.fetch("http://httpbin.org/ip")  # same IP
 
 # Manual proxy config (available now via standard requests)
 import os, requests
-proxies = {"https": f"http://user:{os.environ['IPLOOP_API_KEY']}-country-US@proxy.iploop.io:8880"}
+proxies = {"https": f"http://iploop:{os.environ['IPLOOP_API_KEY']}-country-US@proxy.iploop.io:8880"}
 r = requests.get("https://example.com", proxies=proxies)
 ```
 
@@ -199,7 +211,7 @@ browser = p.chromium.launch(proxy={
 ### Scrapy
 ```python
 import os
-HTTP_PROXY = f'http://user:{os.environ["IPLOOP_API_KEY"]}-country-US@proxy.iploop.io:8880'
+HTTP_PROXY = f'http://iploop:{os.environ["IPLOOP_API_KEY"]}-country-US@proxy.iploop.io:8880'
 ```
 
 ---
@@ -249,6 +261,6 @@ See [rules/setup.md](./rules/setup.md) for full setup guide and troubleshooting.
 
 - **ProxyClaw:** [proxyclaw.ai](https://proxyclaw.ai)
 - **Sign Up:** [iploop.io/signup](https://iploop.io/signup.html)
-- **Python SDK:** `pip install iploop-sdk` v1.8.0 on PyPI — 66 site presets, Chrome fingerprint, TLS spoofing
+- **Python SDK:** `pip install iploop-sdk` on PyPI — site presets, Chrome fingerprinting, SERP-safe search
 - **Docker Hub:** [ultronloop2026/iploop-node](https://hub.docker.com/r/ultronloop2026/iploop-node)
 - **Support:** partners@iploop.io

@@ -292,7 +292,7 @@ SITES = {
 
 
 def make_proxy_url(api_key: str, country: Optional[str] = None) -> str:
-    auth = f"user:{api_key}"
+    auth = f"iploop:{api_key}"
     if country:
         auth += f"-country-{country.upper()}"
     return f"http://{auth}@{PROXY_HOST}:{PROXY_PORT}"
@@ -540,7 +540,7 @@ def main():
     proxy_port = args.proxy_port
 
     def _make_proxy(api_key, country=None):
-        auth = f"user:{api_key}"
+        auth = f"iploop:{api_key}"
         if country:
             auth += f"-country-{country.upper()}"
         return f"http://{auth}@{proxy_host}:{proxy_port}"

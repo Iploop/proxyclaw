@@ -50,7 +50,7 @@ Then use:
 
 All requests route through: `proxy.iploop.io:8880`
 
-Format: `http://user:API_KEY[-options]@proxy.iploop.io:8880`
+Format: `http://iploop:API_KEY[-options]@proxy.iploop.io:8880`
 
 ## Troubleshooting
 

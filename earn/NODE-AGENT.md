@@ -71,13 +71,13 @@ Once you've earned credits, use them as proxy bandwidth:
 
 ```bash
 # HTTP proxy
-curl -x "http://user:YOUR_API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://iploop:YOUR_API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # With geo-targeting
-curl -x "http://user:YOUR_API_KEY-country-DE-city-berlin@proxy.iploop.io:8880" https://example.com
+curl -x "http://iploop:YOUR_API_KEY-country-DE-city-berlin@proxy.iploop.io:8880" https://example.com
 
 # Sticky session (same IP)
-curl -x "http://user:YOUR_API_KEY-session-abc123-sesstype-sticky@proxy.iploop.io:8880" https://example.com
+curl -x "http://iploop:YOUR_API_KEY-session-abc123-sesstype-sticky@proxy.iploop.io:8880" https://example.com
 ```
 
 ### Python

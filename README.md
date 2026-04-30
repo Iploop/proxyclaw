@@ -14,11 +14,11 @@ Residential proxy platform for AI agents, bots & data pipelines — 2M+ resident
 ## Install
 
 ```bash
-# Python SDK (coming soon)
-# pip install iploop-sdk
+# Python SDK
+pip install iploop-sdk
 
-# Node.js SDK (coming soon)
-# npm install iploop
+# Node.js SDK
+npm install iploop
 
 # OpenClaw skill
 clawhub install proxyclaw
@@ -50,6 +50,14 @@ r = client.fetch("https://www.zillow.com/homes/NYC_rb/")      # ✅ 1.3MB
 r = client.fetch("https://www.walmart.com/browse/electronics")  # ✅ 2.5MB
 r = client.fetch("https://www.bestbuy.com/site/laptops")       # ✅ 847KB
 
+# SERP / Google-compatible search research
+# Use this instead of raw google.com/search to avoid verification pages.
+serp = client.serp.search("public search query", country="US")
+print(serp["results"])
+
+# Compatibility wrapper; safe SERP path by default
+serp = client.google.search("public search query", country="US")
+
 # Country targeting
 r = client.fetch("https://example.com", country="DE")
 
@@ -69,10 +77,10 @@ const result = await client.fetch('https://example.com', { country: 'US' });
 ### curl
 ```bash
 # New format (v2) — single key
-curl -x "http://:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://iploop:YOUR_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # Example:
-# curl -x "http://:iploop_fd80eb86_72dabf65...-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+# curl -x "http://iploop:iploop_fd80eb86_72dabf65...-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 ```
 
 ### LangChain (AI Agents)
@@ -153,9 +161,9 @@ Full REST API at `https://api.iploop.io/api/v1/` — see [docs/API.md](docs/API.
 proxy.iploop.io:8880
 ```
 
-Auth format (v2): `APIKEY-country-XX-city-NAME-session-ID@proxy.iploop.io:8880`
+Auth format (v2): `iploop:APIKEY-country-XX-city-NAME-session-ID@proxy.iploop.io:8880`
 
-**New format:** `:iploop_{short}_{secret}-country-XX@proxy.iploop.io:8880`
+**New format:** `iploop:iploop_{short}_{secret}-country-XX@proxy.iploop.io:8880`
 - `short` = first 8 chars of your customer ID
 - `secret` = 40-char random hex
 - Both embedded in one key — just copy and paste!
@@ -214,6 +222,7 @@ Use code **OPENCLAW** for 20% off.
 
 - 🌐 [proxyclaw.ai](https://proxyclaw.ai) — Landing page
 - 📖 [Docs](https://proxyclaw.ai/docs.html) — API documentation
+- 🔎 [SERP preset](docs/SERP.md) — Google-compatible public SERP research
 - 🏠 [platform.iploop.io](https://platform.iploop.io) — Platform Dashboard & sign up sign up
 - 🐍 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop-sdk`
 - 📦 [Node.js SDK](https://github.com/Iploop/iploop-node-sdk) — `npm install iploop`

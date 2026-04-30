@@ -21,7 +21,7 @@ KNOWLEDGE_BASE = {
     },
     "countries": {
         "keywords": ["countr", "geo", "location", "target", "region", "city"],
-        "answer": "195+ countries with city-level, ZIP code, ISP, and ASN targeting.\n\nUsage: `user:APIKEY-country-US-city-miami@proxy.iploop.io:8880`"
+        "answer": "195+ countries with city-level, ZIP code, ISP, and ASN targeting.\n\nUsage: `iploop:APIKEY-country-US-city-miami@proxy.iploop.io:8880`"
     },
     "python_sdk": {
         "keywords": ["python", "pip install", "pip"],
@@ -33,15 +33,19 @@ KNOWLEDGE_BASE = {
     },
     "endpoint": {
         "keywords": ["endpoint", "proxy url", "proxy address", "curl", "connect"],
-        "answer": "Proxy: `proxy.iploop.io:8880`\n\n```bash\ncurl -x http://user:APIKEY-country-us@proxy.iploop.io:8880 https://example.com\n```\n\nSupports HTTP, HTTPS, SOCKS5."
+        "answer": "Proxy: `proxy.iploop.io:8880`\n\n```bash\ncurl -x http://iploop:APIKEY-country-us@proxy.iploop.io:8880 https://example.com\n```\n\nSupports HTTP, HTTPS, SOCKS5."
     },
     "sessions": {
         "keywords": ["sticky", "session", "same ip", "rotate", "rotation"],
-        "answer": "• Rotating (default): New IP per request\n• Sticky: Same IP — add `session-ID-sesstype-sticky` to auth string\n\nExample: `user:APIKEY-session-abc123-sesstype-sticky@proxy.iploop.io:8880`"
+        "answer": "• Rotating (default): New IP per request\n• Sticky: Same IP — add `session-ID-sesstype-sticky` to auth string\n\nExample: `iploop:APIKEY-session-abc123-sesstype-sticky@proxy.iploop.io:8880`"
     },
     "antibot": {
         "keywords": ["cloudflare", "anti-bot", "antibot", "bypass", "block", "stealth", "captcha", "protect"],
         "answer": "Python SDK stealth mode uses Scrapling browser fingerprinting:\n• Bypasses Cloudflare, Akamai, most anti-bot\n• 66 sites tested at 100% success\n• `client = IPLoop(api_key='KEY', stealth=True)`\n\nSites: BestBuy, Nike, Zillow, Walmart, Booking, Airbnb, etc."
+    },
+    "serp": {
+        "keywords": ["serp", "google search", "search results", "startpage", "verification", "unusual traffic", "raw google"],
+        "answer": "For public SERP research, do not scrape raw google.com/search directly. Use the SERP-safe Python SDK preset:\n\n```python\nfrom iploop import IPLoop\nip = IPLoop('YOUR_API_KEY', country='US')\nresults = ip.serp.search('public search query', country='US')\nprint(results['results'])\n```\n\n`ip.google.search(...)` uses the safe SERP path by default. Raw Google is QA-only with `direct=True` and may return verification pages. Docs: https://github.com/Iploop/proxyclaw/blob/master/docs/SERP.md"
     },
     "sites": {
         "keywords": ["site", "preset", "supported site", "which site", "what site", "scrape"],
@@ -81,7 +85,7 @@ KNOWLEDGE_BASE = {
     },
     "troubleshoot": {
         "keywords": ["not working", "error", "fail", "timeout", "403", "blocked", "issue", "problem", "help"],
-        "answer": "Common fixes:\n• 403/blocked → Enable stealth mode: `stealth=True`\n• Timeout → Try a different country/region\n• Auth error → Check API key format: `user:APIKEY@proxy.iploop.io:8880`\n\nStill stuck? Email partners@iploop.io or visit https://iploop.io/contact.html"
+        "answer": "Common fixes:\n• 403/blocked → Enable stealth mode: `stealth=True`\n• Timeout → Try a different country/region\n• Auth error → Check API key format: `iploop:APIKEY@proxy.iploop.io:8880`\n\nStill stuck? Email partners@iploop.io or visit https://iploop.io/contact.html"
     },
     "china": {
         "keywords": ["china", "russia", "iran", "restricted"],

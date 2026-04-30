@@ -54,7 +54,7 @@ curl -s https://gateway.iploop.io:9443/health | python3 -m json.tool
 
 ```bash
 # Basic proxy request
-curl -x "http://user:YOUR_API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
+curl -x "http://iploop:YOUR_API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # Python SDK
 pip install iploop[stealth]
