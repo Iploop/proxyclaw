@@ -113,9 +113,9 @@ agent.run("Find pricing from https://competitor.com/pricing")
 
 [📚 LangChain Integration Docs](https://python.langchain.com/docs/integrations/tools/proxyclaw) | [PyPI](https://pypi.org/project/langchain-proxyclaw/)
 
-## 66 Site Presets — 100% Success Rate
+## 67 Site Presets — 100% Success Rate
 
-Tested 5× back-to-back. Every preset passes every time.
+Core site presets were tested 5× back-to-back; SERP-safe search is included as the 67th preset.
 
 | Category | Sites | Method |
 |----------|-------|--------|
@@ -132,7 +132,7 @@ Tested 5× back-to-back. Every preset passes every time.
 Stealth mode uses advanced browser fingerprinting + residential IPs:
 
 - Bypasses Cloudflare, Akamai, and most anti-bot systems
-- 66/66 sites pass (100%) with stealth mode
+- 66/66 legacy site presets pass (100%) with stealth mode; SERP-safe search is included separately
 - Auto-detects stealth capabilities and activates automatically
 
 ## API
@@ -216,7 +216,7 @@ Use code **OPENCLAW** for 20% off.
 | Countries | 195+ |
 | Protocols | HTTP, HTTPS, SOCKS5 |
 | Device types | Android, Windows, Mac, Smart TV |
-| QA success rate | 100% (66/66 sites) |
+| QA success rate | 100% on 66 legacy site presets; SERP package smoke passed |
 
 ## Links
 

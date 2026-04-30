@@ -7,7 +7,7 @@ description: QA web scraping skill using IPLoop proxy infrastructure. Scrapes 66
 
 Scrape 66 major sites through IPLoop residential proxy + Scrapling anti-bot fingerprinting.
 
-**SDK Version:** v1.5.3 | **Success Rate:** 100% (66/66) | **Install:** `pip install iploop[stealth]`
+**SDK Version:** v1.8.1 | **Legacy QA Success Rate:** 100% (66/66) | **Install:** `pip install iploop-sdk`
 
 ## Strategy: Combo by Default
 
@@ -19,7 +19,7 @@ All sites use Scrapling anti-bot + residential proxy combo. Falls back to plain 
 | 2 | HTTP + Proxy | 28 | Amazon, eBay, TikTok, Target, Airbnb, Cloudflare, Shopify, IMDb, Wikipedia, HackerNews, GitHub, StackOverflow, Steam, Goodreads, Archive.org, CNN, Trustpilot, Craigslist, Newegg, BBC, Medium, DuckDuckGo, Bing, Yahoo News, Fox News, Guardian, Dev.to, Apple, Samsung, Microsoft |
 | 3 | Scrapling + Proxy | 26 | Reddit, Twitter, LinkedIn, Instagram, Booking, Walmart, BestBuy, Pinterest, Zillow, Nike, Wayfair, HomeDepot, Costco, Nordstrom, NYTimes, Quora, Twitch, ASOS, IKEA, Coursera, Zappos, Hulu, Walmart Grocery |
 
-## All 66 Site Presets
+## All 67 Site Presets
 
 | # | Site | Method | Status |
 |---|------|--------|--------|

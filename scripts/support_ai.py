@@ -49,7 +49,7 @@ KNOWLEDGE_BASE = {
     },
     "sites": {
         "keywords": ["site", "preset", "supported site", "which site", "what site", "scrape"],
-        "answer": "66 site presets, 100% success rate:\nYouTube, Reddit, Amazon, LinkedIn, eBay, Twitter, TikTok, Instagram, Booking, Walmart, Target, Airbnb, BestBuy, Pinterest, Zillow, Nike, IKEA, Apple, Samsung, BBC, CNN, NYTimes + 44 more.\n\nFull list: https://github.com/Iploop/proxyclaw"
+        "answer": "67 site presets, 100% success rate:\nYouTube, Reddit, Amazon, LinkedIn, eBay, Twitter, TikTok, Instagram, Booking, Walmart, Target, Airbnb, BestBuy, Pinterest, Zillow, Nike, IKEA, Apple, Samsung, BBC, CNN, NYTimes + 44 more.\n\nFull list: https://github.com/Iploop/proxyclaw"
     },
     "ethical": {
         "keywords": ["gdpr", "ccpa", "ethical", "legal", "comply", "compliance", "sourced", "source", "legit"],

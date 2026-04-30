@@ -5,7 +5,7 @@ description: |
 compatibility: Requires network access
 metadata:
   author: iploop
-  version: "2.5.1"
+  version: "2.5.2"
   website: https://proxyclaw.ai
   platform: https://iploop.io
   docker: ultronloop2026/iploop-node
@@ -195,7 +195,7 @@ const browser = await puppeteer.launch({
   args: [`--proxy-server=http://proxy.iploop.io:8880`]
 });
 const page = await browser.newPage();
-await page.authenticate({ username: 'user', password: `${process.env.IPLOOP_API_KEY}-country-US` });
+await page.authenticate({ username: 'iploop', password: `${process.env.IPLOOP_API_KEY}-country-US` });
 await page.goto('https://example.com');
 ```
 
