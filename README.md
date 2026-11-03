@@ -39,22 +39,22 @@ A successful proxy connection does not prove anti-bot bypass, CAPTCHA solving, J
 Support: support@iploop.io. Keep credentials private.
 
 ## Agent CLI (this repository)
-Requires **Python 3, bash and curl**. Clone the current GitHub source; an older ClawHub package is not automatically updated by a repository change.
+Requires **Python 3, bash and curl**. Install the current ClawHub release or clone GitHub source. Use explicit bash invocation because registry installers may not preserve executable permissions.
 ```bash
 git clone https://github.com/Iploop/proxyclaw.git
 cd proxyclaw
-./setup.sh
-./fetch.sh https://example.com --country US
-./fetch.sh https://example.com --country US --session demo123
-./fetch.sh https://example.com --country GB --protocol socks5h
-./fetch.sh https://example.com --format markdown
+bash ./setup.sh
+bash ./fetch.sh https://example.com --country US
+bash ./fetch.sh https://example.com --country US --session demo123
+bash ./fetch.sh https://example.com --country GB --protocol socks5h
+bash ./fetch.sh https://example.com --format markdown
 ```
 `--format markdown` is a basic text conversion, not JavaScript rendering or structured extraction. Credentials are delivered to curl through stdin, not command-line arguments. Failed connections or non-success HTTP status exit nonzero. Setup does not announce success on failure.
 
 ### V2 state/city interface
 ```bash
-./fetch.sh https://example.com --country US --state tx --city austin
-./fetch.sh https://example.com --country US --city austin
+bash ./fetch.sh https://example.com --country US --state tx --city austin
+bash ./fetch.sh https://example.com --country US --city austin
 ```
 No deployment flag is required. State/city selectors are deployed in V2. Country is required; state is optional for a city request. Exact-city accuracy is not certified: some Austin test exits were labeled San Antonio or Schertz by independent geo services. Inspect the observed location when precision matters.
 
