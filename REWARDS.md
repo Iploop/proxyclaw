@@ -1,3 +1,5 @@
+> **Legacy / separate integration reference.** Use https://proxyclaw.ai/docs.html for V2. Historical APIs, rewards and benchmarks below are not V2 capability or quota guarantees.
+
 # 💰 IPLoop Node Rewards
 
 Earn proxy credits just by keeping your node online. No bandwidth metering — pure uptime rewards.
@@ -57,7 +59,7 @@ curl -s https://gateway.iploop.io:9443/health | python3 -m json.tool
 curl -x "http://iploop:YOUR_API_KEY-country-US@proxy.iploop.io:8880" https://httpbin.org/ip
 
 # Python SDK
-pip install iploop[stealth]
+pip install iploop-sdk[stealth]
 ```
 
 ```python

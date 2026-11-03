@@ -1,3 +1,5 @@
+> **Legacy / separate integration reference.** Use https://proxyclaw.ai/docs.html for V2. Historical APIs, rewards and benchmarks below are not V2 capability or quota guarantees.
+
 # 🌐 IPLoop Node Agent
 
 **Earn proxy credits by sharing your unused bandwidth.**
@@ -131,7 +133,7 @@ A: Yes! Each additional node earns +20% bonus credits.
 A: 5 minutes before earning starts. Gold tier kicks in after 24 cumulative hours.
 
 **Q: Do I need to sign up?**
-A: The node agent auto-registers. To use earned credits as proxy, sign up at [iploop.io/signup.html](https://iploop.io/signup.html) to get your API key.
+A: The node agent auto-registers. To use earned credits as proxy, sign up at [iploop.io/signup.html](https://platform.iploop.io/) to get your API key.
 
 ## Ethical & Compliant
 
@@ -146,7 +148,7 @@ A: The node agent auto-registers. To use earned credits as proxy, sign up at [ip
 - 🌐 [IPLoop Dashboard](https://iploop.io)
 - 🐳 [Docker Hub](https://hub.docker.com/r/ultronloop2026/iploop-node)
 - 🔧 [ProxyClaw Skill](https://github.com/Iploop/proxyclaw)
-- 📦 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop[stealth]`
+- 📦 [Python SDK](https://github.com/Iploop/iploop-python) — `pip install iploop-sdk[stealth]`
 - 📦 [Node.js SDK](https://github.com/Iploop/iploop-node-sdk) — `npm install iploop`
 - 📖 [API Docs](https://proxyclaw.ai/docs.html)
 

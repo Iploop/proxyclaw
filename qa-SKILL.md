@@ -1,3 +1,5 @@
+> **Legacy / separate integration reference.** Use https://proxyclaw.ai/docs.html for V2. Historical APIs, rewards and benchmarks below are not V2 capability or quota guarantees.
+
 ---
 name: iploop-qa-scraper
 description: QA web scraping skill using IPLoop proxy infrastructure. Scrapes 66 major sites via SDK v1.5.3 with API extractors, anti-bot bypass, smart fallbacks, and real data extraction. 100% success rate. Use when testing proxy quality, scraping sites through IPLoop, or validating proxy data extraction. Triggers on proxy QA, site scraping, data extraction testing, anti-bot bypass.

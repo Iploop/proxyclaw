@@ -1,3 +1,5 @@
+> **Legacy / separate integration reference.** Use https://proxyclaw.ai/docs.html for V2. Historical APIs, rewards and benchmarks below are not V2 capability or quota guarantees.
+
 # IPLoop API Reference
 
 Base URL: `https://api.iploop.io/api/v1`

@@ -1,3 +1,5 @@
+> **Legacy / separate integration reference.** Use https://proxyclaw.ai/docs.html for V2. Historical APIs, rewards and benchmarks below are not V2 capability or quota guarantees.
+
 # IPLoop Node Agent — Docker Setup
 
 Earn proxy credits by sharing your unused bandwidth.
