@@ -1,6 +1,6 @@
 {
   "name": "proxyclaw",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Residential proxy CLI with explicit V2 credentials, country/state/city selectors and sticky sessions; exact-city accuracy varies.",
   "author": "iploop",
   "license": "MIT",

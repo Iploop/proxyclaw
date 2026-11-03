@@ -1,11 +1,11 @@
 ---
 name: proxyclaw
 description: Residential proxy CLI with explicit V2 and legacy credentials.
-version: 3.0.2
+version: 3.0.3
 license: MIT
 metadata:
   author: iploop
-  version: "3.0.2"
+  version: "3.0.3"
   openclaw:
     requires:
       bins: [bash, curl, python3]
