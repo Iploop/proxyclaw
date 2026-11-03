@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>ProxyClaw — Residential Proxy Access for Agents</title>
-<meta name="description" content="Residential proxy access with explicit V2 credentials, country routing and sticky sessions. State/city is V2 pending server deployment.">
+<meta name="description" content="Residential proxy access with explicit V2 credentials, country routing and sticky sessions. State/city is deployed in V2; exact-city accuracy varies.">
 <meta property="og:title" content="ProxyClaw — Open Web Access for OpenClaw Agents">
 <meta property="og:description" content="Residential proxy access for agents. Use the current V2 skill, MCP source or Python SDK with separate proxy credentials.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -221,7 +221,7 @@ footer a:hover{color:#fff}
             <br>
             <div class="dim"># Option 3: Python SDK</div>
             <div class="dim">$ pip install --upgrade iploop-sdk</div>
-            <div class="green">✓ IPLoop SDK — V2 support from 1.8.2</div>
+            <div class="green">✓ IPLoop SDK — V2 support from 1.8.3</div>
             <br>
             <div class="dim">from iploop import IPLoop<br>import os<br>client = IPLoop(api_key=os.environ['IPLOOP_API_KEY'],<br>&nbsp;&nbsp;proxy_username=os.environ['IPLOOP_PROXY_USERNAME'],<br>&nbsp;&nbsp;proxy_password=os.environ['IPLOOP_PROXY_PASSWORD'])<br>client.get('https://example.com', country='US')</div>
             <div class="blue">→ Routing through residential IP (US)...</div>
@@ -300,7 +300,7 @@ footer a:hover{color:#fff}
       <div class="feat-card">
         <div class="feat-ic">🌍</div>
         <h4>Country Targeting</h4>
-        <p>Access content from any location. Country targeting is available. State/city targeting is a V2 capability pending server deployment.</p>
+        <p>Access content from any location. Country targeting is available. State/city targeting is deployed in V2; exact-city accuracy varies.</p>
       </div>
       <div class="feat-card">
         <div class="feat-ic">📝</div>
@@ -446,7 +446,7 @@ footer a:hover{color:#fff}
       <h3 style="font-size:1rem;margin-bottom:1rem;font-weight:600;color:#7b61ff">Python SDK usage:</h3>
       <div class="code-block">
         <button class="code-copy" onclick="navigator.clipboard.writeText('pip install --upgrade iploop-sdk');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
-        <span class="comment"># V2 support requires iploop-sdk 1.8.2 or newer</span><br>
+        <span class="comment"># V2 support requires iploop-sdk 1.8.3 or newer</span><br>
         $ pip install --upgrade iploop-sdk
       </div>
       <div class="code-block" style="margin-top:.5rem;font-size:.85rem">

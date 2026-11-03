@@ -1,8 +1,3 @@
-# V2 verification
+# Deployed V2 geography verification
 
-- 14 CLI contract tests passed.
-- Dedicated QA account: setup, HTTP and SOCKS5 requests passed; invalid country and un-deployed city calls rejected.
-- Key-only legacy auth generation regression-tested, not a new live OG fleet certification.
-- City/state stays a V2 rollout-gated capability, not deployed by this change.
-- Current GitHub source is the supported installation path; ClawHub/catalog packages are separate release targets.
-- No gateway restart, customer balance edit or credential revocation.
+New SDK/CLI/MCP accept validated state/city by default. Require country, allow city without state. Legacy mode preserved; no gateway changes. Tests and real dedicated QA canaries are recorded in the task release report. State/city selectors are deployed in V2. Country is required; state is optional for a city request. Exact-city accuracy is not certified: some Austin test exits were labeled San Antonio or Schertz by independent geo services. Inspect the observed location when precision matters.

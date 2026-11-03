@@ -112,9 +112,12 @@ curl --socks5-hostname "$SOCKS5_PROXY_ENDPOINT" \
         <pre><code>curl --proxy "$HTTP_PROXY_ENDPOINT" \
   --proxy-user "${PROXY_USERNAME}-country-gb:${PROXY_PASSWORD}" \
   "https://ipinfo.io/json"</code></pre>
-        <p><strong>Current limitation:</strong> state/city selectors are not accepted in the current verified new-platform path. Do not rely on state, city, ZIP or ASN restrictions until explicitly verified for your integration. Invalid country selectors must not be used: the backend may return an unintended geography. The V2 Python SDK validates country codes locally.</p>
+        <p><strong>V2 geography:</strong> State/city selectors are deployed in V2. Country is required; state is optional for a city request. Exact-city accuracy is not certified: some Austin test exits were labeled San Antonio or Schertz by independent geo services. ZIP and ASN restrictions remain unverified. Inspect observed geography when exact-city precision matters. Invalid country selectors must not be used: the backend may return an unintended geography. The V2 Python SDK validates country codes locally.</p>
 
-        <h2 id="sessions">Rotation and Sticky Sessions</h2>
+        <p>SDK 1.8.3+: <code>client.get('https://example.com', country='US', state='tx', city='austin')</code>. MCP: pass <code>country</code>, optional <code>state</code> and <code>city</code> to <code>proxy_fetch</code>. No feature flag is needed.</p><pre><code>curl --proxy "$HTTP_PROXY_ENDPOINT" \
+  --proxy-user "${PROXY_USERNAME}-country-us-state-tx-city-austin:${PROXY_PASSWORD}" \
+  "https://example.com"</code></pre>
+<h2 id="sessions">Rotation and Sticky Sessions</h2>
         <p>Omit a session ID for ordinary rotating selection. Connections and pooled clients may reuse an exit; rotation does not guarantee a unique, never-used IP on every request.</p>
         <pre><code># Reuse this ID for requests belonging to the same sticky session
 curl --proxy "$HTTP_PROXY_ENDPOINT" \
@@ -128,8 +131,8 @@ curl --proxy "$HTTP_PROXY_ENDPOINT" \
         <p>Use letters, digits or underscores in SDK session IDs. Change the ID to request a different session. Device availability can cause an exit change; no uninterrupted fixed-IP lifetime is guaranteed.</p>
 
         <h2 id="integrations">Python SDK — V2 Support</h2>
-        <p>Use <strong>iploop-sdk 1.8.2 or newer</strong> with all three account credentials. Key-only construction retains legacy mode; it is not the new-platform example.</p>
-        <pre><code>python -m pip install 'iploop-sdk[async,socks]&gt;=1.8.2'</code></pre>
+        <p>Use <strong>iploop-sdk 1.8.3 or newer</strong> with all three account credentials. Key-only construction retains legacy mode; it is not the new-platform example.</p>
+        <pre><code>python -m pip install 'iploop-sdk[async,socks]&gt;=1.8.3'</code></pre>
         <pre><code>import os
 from iploop import IPLoop
 
@@ -149,8 +152,8 @@ usage = client.usage()
 print(usage['account']['balance_gb'])  # decimal GB
 print(usage['daily'])                # daily byte counts</code></pre>
         <p>Set those environment variables to your own API key, proxy username and proxy password first. For synchronous SOCKS5, pass <code>proxy_protocol='socks5h'</code>. Async HTTP is supported through <code>AsyncIPLoop</code> with the same credentials and an async context manager; async SOCKS is explicitly unsupported.</p>
-        <p>V2 city targeting, rendering and country-inventory/support-message helpers are not claimed as supported by this release. They raise explicit unsupported-feature errors rather than silently calling legacy services. Extractor and anti-bot results remain target-dependent.</p>
-        <p><a href="https://pypi.org/project/iploop-sdk/1.8.2/" style="color:var(--purple)">Verified SDK release</a> · <a href="https://github.com/Iploop/iploop-python" style="color:var(--purple)">SDK source</a></p>
+        <p>V2 state/city selectors are supported from SDK 1.8.3. Rendering and country-inventory/support-message helpers remain unsupported. Unsupported helpers raise explicit errors rather than silently calling legacy services. Extractor and anti-bot results remain target-dependent.</p>
+        <p><a href="https://pypi.org/project/iploop-sdk/1.8.3/" style="color:var(--purple)">Verified SDK release</a> · <a href="https://github.com/Iploop/iploop-python" style="color:var(--purple)">SDK source</a></p>
 
         <h2 id="proxyclaw">ProxyClaw Integrations</h2>
         <p>The proxy platform, Python SDK and agent integrations are separate components. The updated GitHub skill supports explicit V2 proxy credentials. Older skill catalog versions may still assume legacy key-only authentication. Do not assume that installing an agent skill converts new-platform credentials automatically.</p>
@@ -158,7 +161,7 @@ print(usage['daily'])                # daily byte counts</code></pre>
         <p><a href="https://github.com/Iploop/proxyclaw" style="color:var(--purple)">ProxyClaw repository</a></p>
 
         <h2 id="mcp">MCP Clients</h2>
-        <p>The updated GitHub MCP source supports separate V2 proxy credentials. Clone it, run <code>npm ci &amp;&amp; npm run build</code>, and configure your client to run <code>dist/index.js</code>. Older npm/catalog releases may remain legacy; do not assume they are updated. State/city remains V2 pending deployment.</p>
+        <p>The updated GitHub MCP source supports separate V2 proxy credentials. Clone it, run <code>npm ci &amp;&amp; npm run build</code>, and configure your client to run <code>dist/index.js</code>. Older npm/catalog releases may remain legacy; do not assume they are updated. State/city is available by default in the updated source, with the accuracy caveat above.</p>
         <p><a href="https://github.com/Iploop/proxyclaw-mcp" style="color:var(--purple)">MCP project</a></p>
 
         <h2 id="errors">Errors and Usage</h2>
