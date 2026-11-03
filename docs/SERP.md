@@ -1,3 +1,5 @@
+> **Legacy / separate integration reference.** Use https://proxyclaw.ai/docs.html for V2. Historical APIs, rewards and benchmarks below are not V2 capability or quota guarantees.
+
 # SERP / Google-Compatible Search
 
 Raw `google.com/search` can return Google verification, consent, or JavaScript retry pages when accessed through proxy traffic. For public SERP research, use the SDK SERP preset instead of scraping raw Google directly.

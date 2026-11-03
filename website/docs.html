@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation — ProxyClaw</title>
+  <meta name="description" content="Get started with IPLoop proxies in minutes. API docs, integration guides, and code examples.">
+  <link rel="stylesheet" href="styles.css?v=1777019558">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%239b51e0'/%3E%3Cpath d='M10 16a6 6 0 0112 0' stroke='white' stroke-width='2.5' fill='none'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="19" cy="19" r="17" fill="url(#lg1)"/>
+        <path d="M12 19a7 7 0 0114 0" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="19" cy="19" r="3" fill="white"/>
+        <defs><linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38"><stop stop-color="#7B61FF"/><stop offset="1" stop-color="#9B51E0"/></linearGradient></defs>
+      </svg>
+      IPLoop<span class="dot">.io</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Features</a>
+      <a href="#mcp">MCP</a>
+      <a href="docs.html">Docs</a>
+      <a href="https://github.com/Iploop/proxyclaw" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://twitter.com/proxyclaw_ai" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://iploop.io">IPLoop</a>
+    </nav>
+    <div class="nav-right">
+      <a href="https://proxyclaw.ai" target="_blank" class="btn-login nav-proxyclaw">ProxyClaw</a>
+      <a href="https://platform.iploop.io/" class="btn btn-primary btn-sm">Get Started</a>
+      <button class="hamburger" onclick="document.getElementById('mNav').classList.add('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mNav">
+  <button class="mobile-close" onclick="document.getElementById('mNav').classList.remove('open')">✕</button>
+  <a href="index.html">Features</a>
+  <a href="#mcp">MCP</a>
+  <a href="docs.html">Docs</a>
+  <a href="https://github.com/Iploop/proxyclaw" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://twitter.com/proxyclaw_ai" target="_blank" rel="noopener">Twitter</a>
+  <a href="https://iploop.io">IPLoop</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:40px">
+  <div class="container s-center">
+    <span class="section-label">📖 Documentation</span>
+    <h1>Get Started in Minutes</h1>
+    <p class="hero-sub">Everything you need to integrate IPLoop proxies into your workflow. API docs, code examples, and integration guides.</p>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section class="section">
+  <div class="container">
+    <div class="docs-layout">
+      <nav class="docs-sidebar">
+        <a href="#quickstart" class="active">Quick Start</a>
+        <a href="#authentication">Authentication</a>
+        <a href="#residential">Residential Proxies</a>
+        <a href="#targeting">Geo-Targeting</a>
+        <a href="#sessions">Session Management</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#proxyclaw">ProxyClaw</a>
+        <a href="#mcp">Claude MCP</a>
+        <a href="#errors">Error Handling</a>
+      </nav>
+      <div class="docs-content">
+        <h2 id="quickstart">Quick Start — New IPLoop Platform</h2>
+        <p><strong>Step 1:</strong> Create an account or sign in at <a href="https://platform.iploop.io/" style="color:var(--purple)">platform.iploop.io</a>.</p>
+        <p><strong>Step 2:</strong> Save your API key, proxy username and proxy password privately. The dashboard password, proxy password and API key are different credentials.</p>
+        <p><strong>Step 3:</strong> Add bandwidth, then copy the HTTP and SOCKS5 endpoints from the dashboard’s <strong>Connect</strong> section. Set the values below to your own credentials and endpoints before running the examples.</p>
+        <pre><code>PROXY_USERNAME='YOUR_PROXY_USERNAME'
+PROXY_PASSWORD='YOUR_PROXY_PASSWORD'
+HTTP_PROXY_ENDPOINT='COPY_HTTP_ENDPOINT_FROM_CONNECT'
+SOCKS5_PROXY_ENDPOINT='COPY_SOCKS5_ENDPOINT_FROM_CONNECT'
+
+curl --proxy "$HTTP_PROXY_ENDPOINT" \
+  --proxy-user "${PROXY_USERNAME}-country-us:${PROXY_PASSWORD}" \
+  "https://api.ipify.org?format=json"</code></pre>
+
+        <h2 id="authentication">Authentication</h2>
+        <p><strong>Proxy traffic:</strong> use your proxy username and proxy password. Country and session options belong in the <em>username</em>, not the API key or proxy password.</p>
+        <p><strong>Dashboard:</strong> use your email and dashboard password, or choose API-key login. Keep your key private; never paste real credentials into public examples.</p>
+        <p>These instructions apply to new accounts on platform.iploop.io. Existing legacy integrations use a different key-only format and are not silently migrated by changing a URL.</p>
+
+        <h2 id="residential">HTTP and SOCKS5</h2>
+        <p>Use the current endpoints shown in Connect. An HTTPS target protects the target connection; it does not by itself establish encrypted authentication to the proxy.</p>
+        <pre><code># HTTP CONNECT to an HTTPS target
+curl --proxy "$HTTP_PROXY_ENDPOINT" \
+  --proxy-user "${PROXY_USERNAME}-country-us:${PROXY_PASSWORD}" \
+  "https://example.com"
+
+# SOCKS5 with target DNS resolved through the proxy
+curl --socks5-hostname "$SOCKS5_PROXY_ENDPOINT" \
+  --proxy-user "${PROXY_USERNAME}-country-us:${PROXY_PASSWORD}" \
+  "https://api.ipify.org?format=json"</code></pre>
+        <p>Successful connection does not guarantee that a target website will accept a request. Inspect its returned status and content.</p>
+
+        <h2 id="targeting">Country Targeting</h2>
+        <p>Append an ISO alpha-2 country code to your proxy username. For example: <code>-country-us</code>, <code>-country-ca</code>, <code>-country-gb</code>, <code>-country-de</code>, <code>-country-au</code> or <code>-country-tr</code>. Availability depends on the live pool.</p>
+        <pre><code>curl --proxy "$HTTP_PROXY_ENDPOINT" \
+  --proxy-user "${PROXY_USERNAME}-country-gb:${PROXY_PASSWORD}" \
+  "https://ipinfo.io/json"</code></pre>
+        <p><strong>Current limitation:</strong> state/city selectors are not accepted in the current verified new-platform path. Do not rely on state, city, ZIP or ASN restrictions until explicitly verified for your integration. Invalid country selectors must not be used: the backend may return an unintended geography. The V2 Python SDK validates country codes locally.</p>
+
+        <h2 id="sessions">Rotation and Sticky Sessions</h2>
+        <p>Omit a session ID for ordinary rotating selection. Connections and pooled clients may reuse an exit; rotation does not guarantee a unique, never-used IP on every request.</p>
+        <pre><code># Reuse this ID for requests belonging to the same sticky session
+curl --proxy "$HTTP_PROXY_ENDPOINT" \
+  --proxy-user "${PROXY_USERNAME}-country-us-session-demo123:${PROXY_PASSWORD}" \
+  "https://api.ipify.org?format=json"
+
+# Request a five-minute session (duration is in minutes)
+curl --proxy "$HTTP_PROXY_ENDPOINT" \
+  --proxy-user "${PROXY_USERNAME}-country-us-session-demo123-sesstime-5:${PROXY_PASSWORD}" \
+  "https://api.ipify.org?format=json"</code></pre>
+        <p>Use letters, digits or underscores in SDK session IDs. Change the ID to request a different session. Device availability can cause an exit change; no uninterrupted fixed-IP lifetime is guaranteed.</p>
+
+        <h2 id="integrations">Python SDK — V2 Support</h2>
+        <p>Use <strong>iploop-sdk 1.8.2 or newer</strong> with all three account credentials. Key-only construction retains legacy mode; it is not the new-platform example.</p>
+        <pre><code>python -m pip install 'iploop-sdk[async,socks]&gt;=1.8.2'</code></pre>
+        <pre><code>import os
+from iploop import IPLoop
+
+client = IPLoop(
+    api_key=os.environ['IPLOOP_API_KEY'],
+    proxy_username=os.environ['IPLOOP_PROXY_USERNAME'],
+    proxy_password=os.environ['IPLOOP_PROXY_PASSWORD'],
+)
+r = client.get('https://example.com', country='US', retries=2, timeout=15)
+r.raise_for_status()
+print(r.text)
+
+session = client.session(session_id='my_session1', country='US', lifetime=5)
+r = session.get('https://api.ipify.org?format=json', retries=1)
+
+usage = client.usage()
+print(usage['account']['balance_gb'])  # decimal GB
+print(usage['daily'])                # daily byte counts</code></pre>
+        <p>Set those environment variables to your own API key, proxy username and proxy password first. For synchronous SOCKS5, pass <code>proxy_protocol='socks5h'</code>. Async HTTP is supported through <code>AsyncIPLoop</code> with the same credentials and an async context manager; async SOCKS is explicitly unsupported.</p>
+        <p>V2 city targeting, rendering and country-inventory/support-message helpers are not claimed as supported by this release. They raise explicit unsupported-feature errors rather than silently calling legacy services. Extractor and anti-bot results remain target-dependent.</p>
+        <p><a href="https://pypi.org/project/iploop-sdk/1.8.2/" style="color:var(--purple)">Verified SDK release</a> · <a href="https://github.com/Iploop/iploop-python" style="color:var(--purple)">SDK source</a></p>
+
+        <h2 id="proxyclaw">ProxyClaw Integrations</h2>
+        <p>The proxy platform, Python SDK and agent integrations are separate components. The updated GitHub skill supports explicit V2 proxy credentials. Older skill catalog versions may still assume legacy key-only authentication. Do not assume that installing an agent skill converts new-platform credentials automatically.</p>
+        <p>For new accounts, use the verified HTTP/SOCKS5 or Python examples above. Review each integration’s documented version and credential configuration before use.</p>
+        <p><a href="https://github.com/Iploop/proxyclaw" style="color:var(--purple)">ProxyClaw repository</a></p>
+
+        <h2 id="mcp">MCP Clients</h2>
+        <p>The updated GitHub MCP source supports separate V2 proxy credentials. Clone it, run <code>npm ci &amp;&amp; npm run build</code>, and configure your client to run <code>dist/index.js</code>. Older npm/catalog releases may remain legacy; do not assume they are updated. State/city remains V2 pending deployment.</p>
+        <p><a href="https://github.com/Iploop/proxyclaw-mcp" style="color:var(--purple)">MCP project</a></p>
+
+        <h2 id="errors">Errors and Usage</h2>
+        <pre><code>401 — Account API authentication was rejected.
+407 — Proxy authentication was rejected; verify the proxy credentials and syntax.
+429 — Back off and respect the service response.
+502 / 503 — Temporary connection/service failure; use bounded retries.</code></pre>
+        <p>SOCKS authentication failures may appear as client connection errors instead of an HTTP code. Do not retry invalid credentials indefinitely.</p>
+        <p>The dashboard displays balance in decimal GB. The underlying account balance is bytes; usage rows also report bytes. Owner credits are separate from paid purchases. Request/success counters are service metrics, not a guarantee of successful target-site business results.</p>
+        <p>Request history is available for requests captured while account logging is enabled. Enable logging in the dashboard before a bounded diagnostic run, and turn it off when finished. An empty history view does not prove zero traffic when logging was disabled; balance and daily usage are separate views.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Need Help Getting Started?</h2>
+    <p>Our support team is available 24/7 to help you integrate IPLoop into your workflow.</p>
+    <div class="cta-btns">
+      <a href="mailto:support@iploop.io" class="btn btn-primary btn-lg">Contact Support</a>
+      <a href="https://discord.com/invite/clawd" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Join Discord</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <svg viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="17" fill="url(#lgf)"/><path d="M12 19a7 7 0 0114 0" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="19" cy="19" r="3" fill="white"/><defs><linearGradient id="lgf" x1="0" y1="0" x2="38" y2="38"><stop stop-color="#7B61FF"/><stop offset="1" stop-color="#9B51E0"/></linearGradient></defs></svg>
+          IPLoop<span class="dot">.io</span>
+        </div>
+        <p>AI-ready proxy solutions and advanced data extraction. Engineered to drive your business forward.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><a href="docs.html#residential">Residential</a><a href="index.html#pricing">ISP</a><a href="index.html#pricing">Datacenter</a><a href="index.html#pricing">Mobile</a><a href="https://proxyclaw.ai">ProxyClaw</a></div>
+      <div class="footer-col"><h4>Solutions</h4><a href="docs.html#integrations">Web Scraping</a><a href="docs.html#integrations">Market Research</a><a href="docs.html#integrations">AI Data Collection</a><a href="docs.html#integrations">Ad Verification</a><a href="docs.html#integrations">SEO Monitoring</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="docs.html">Documentation</a><a href="https://github.com/Iploop/proxyclaw">GitHub</a><a href="https://github.com/Iploop/proxyclaw-mcp">MCP Server</a>
+  <a href="https://twitter.com/proxyclaw_ai" target="_blank" rel="noopener noreferrer">Twitter</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="https://iploop.io">About</a><a href="mailto:partners@iploop.io">Contact</a><a href="https://iploop.io/terms.html">Terms</a><a href="https://iploop.io/privacy.html">Privacy</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 IPLoop. All rights reserved.</span><span>partners@iploop.io</span></div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
+<!-- Chat Widget -->
+<style>
+.chat-fab{position:fixed!important;bottom:20px!important;right:20px!important;width:56px;height:56px;border-radius:50%;background:#000;color:#fff;border:none;font-size:22px;cursor:pointer;z-index:9999!important;box-shadow:0 4px 12px rgba(0,0,0,0.3);display:flex!important;align-items:center;justify-content:center;transition:transform 0.2s}
+.chat-fab:active{transform:scale(0.9)}
+.chat-fab__badge{position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:#ff0a0b;border:2px solid #fff}
+.chat-panel{position:fixed!important;bottom:86px!important;right:20px!important;width:380px;height:520px;border:1px solid #000;background:#fff;z-index:9998!important;display:none;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+.chat-panel.open{display:flex}
+.chat-panel__header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#000;color:#fff;font-family:monospace;font-size:11px;letter-spacing:0.05em}
+.chat-panel__close{background:none;border:none;color:#fff;font-size:16px;cursor:pointer;padding:4px 8px}
+.chat-panel__body{padding:18px;font-size:14px;line-height:1.55;color:#111}.chat-panel__body p{margin:0 0 14px}.chat-panel__cta{display:block;text-align:center;background:#9bff00;color:#050505;text-decoration:none;font-weight:800;border-radius:10px;padding:12px 14px;margin-top:12px}.chat-panel__muted{font-size:12px;color:#555}
+@media(max-width:440px){.chat-panel{left:10px;right:10px;bottom:80px;width:auto;height:70vh}}
+</style>
+<button class="chat-fab" onclick="toggleChat()" id="chatFab">💬<span class="chat-fab__badge"></span></button>
+<div class="chat-panel" id="chatPanel">
+<div class="chat-panel__header"><span>⚡ Prime Chat</span><button class="chat-panel__close" onclick="toggleChat()">✕</button></div>
+<div class="chat-panel__body"><p><strong>Need help?</strong><br>Send us your question and we’ll reply by email.</p><a class="chat-panel__cta" href="mailto:support@iploop.io?subject=ProxyClaw%20support%20request">Email support@iploop.io</a><p class="chat-panel__muted">Chat is temporarily routed to email so visitors never hit a dead support widget.</p></div>
+</div>
+<script>
+function toggleChat(){var p=document.getElementById("chatPanel");if(p.classList.contains("open")){p.classList.remove("open")}else{p.classList.add("open")}}
+</script>
+</body>
+</html>
