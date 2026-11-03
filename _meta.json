@@ -1,7 +1,7 @@
 {
   "name": "proxyclaw",
-  "version": "3.0.0",
-  "description": "Residential proxy CLI with explicit V2 credentials, country routing and sticky sessions; city is V2 pending deployment.",
+  "version": "3.0.1",
+  "description": "Residential proxy CLI with explicit V2 credentials, country/state/city selectors and sticky sessions; exact-city accuracy varies.",
   "author": "iploop",
   "license": "MIT",
   "homepage": "https://proxyclaw.ai",
@@ -51,13 +51,13 @@
       "IPLOOP_PROXY_USERNAME",
       "IPLOOP_PROXY_PASSWORD"
     ],
-    "city": "V2 pending server deployment; rollout-gated"
+    "city": "Deployed V2 selectors; exact-city accuracy varies"
   },
   "features": [
     "v2-explicit-credentials",
     "legacy-compatibility",
     "country-routing",
     "sticky-sessions",
-    "v2-city-pending-rollout"
+    "v2-city-state"
   ]
 }

@@ -40,11 +40,8 @@ def build_config(args, env, metadata=None):
             raise ValueError('V2 requires both proxy username and proxy password')
         if args.asn:
             raise ValueError('V2 ASN targeting is not available')
-        if args.city or args.state:
-            if env.get('IPLOOP_V2_CITY_ENABLED') != '1':
-                raise ValueError('V2 state/city targeting is pending server rollout; not yet deployed')
-            if not country or (args.city and not args.state):
-                raise ValueError('V2 city targeting requires country and state')
+        if (args.city or args.state) and not country:
+            raise ValueError('V2 state/city targeting requires country')
         if metadata is None:
             portal = env.get('IPLOOP_PORTAL_URL', 'https://platform.iploop.io').rstrip('/')
             p = urlsplit(portal)
@@ -108,7 +105,7 @@ def main():
         sys.stdout.write(text)
         return 0
     except (ValueError, OSError, KeyError, TypeError, subprocess.TimeoutExpired):
-        print('Invalid configuration or request failed; verify selectors and credentials. V2 state/city remains rollout-gated.', file=sys.stderr)
+        print('Invalid configuration or request failed; verify selectors and credentials.', file=sys.stderr)
         return 1
 
 if __name__ == '__main__':

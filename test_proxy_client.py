@@ -18,12 +18,14 @@ class Contract(unittest.TestCase):
     def test_country(self):
         for c in ['ZZ','USA','US-session-x']:
             with self.assertRaises(ValueError):build_config(args(country=c),V2,META)
-    def test_city_gate(self):
-        with self.assertRaises(ValueError):build_config(args(state='tx',city='austin'),V2,META)
+    def test_deployed_city_default(self):
+        self.assertIn('-state-tx-city-austin:',build_config(args(state='tx',city='austin'),V2,META))
     def test_future_city(self):
         self.assertIn('-country-us-state-tx-city-austin:',build_config(args(state='tx',city='austin'),dict(V2,IPLOOP_V2_CITY_ENABLED='1'),META))
-    def test_city_requires_state(self):
-        with self.assertRaises(ValueError):build_config(args(city='austin'),dict(V2,IPLOOP_V2_CITY_ENABLED='1'),META)
+    def test_city_without_state(self):
+        self.assertIn('-country-us-city-austin:',build_config(args(city='austin'),V2,META))
+    def test_geo_requires_country(self):
+        with self.assertRaises(ValueError):build_config(args(country=None,city='austin'),V2,META)
     def test_session(self):
         self.assertIn('-session-demo123:',build_config(args(session='demo123'),V2,META))
         with self.assertRaises(ValueError):build_config(args(session='x-city-austin'),V2,META)
